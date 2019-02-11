@@ -1,0 +1,9 @@
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\bin\Debug\netcoreapp2.2\Fonour.Utility.deps.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\bin\Debug\netcoreapp2.2\Fonour.Utility.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\bin\Debug\netcoreapp2.2\Fonour.Utility.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.csprojAssemblyReference.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.csproj.CoreCompileInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.AssemblyInfoInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.AssemblyInfo.cs
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.pdb

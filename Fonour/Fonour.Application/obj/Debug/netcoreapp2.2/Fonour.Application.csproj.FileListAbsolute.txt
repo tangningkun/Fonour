@@ -1,0 +1,14 @@
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.Application.deps.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.Application.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.Application.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.csprojAssemblyReference.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.csproj.CoreCompileInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.AssemblyInfoInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.AssemblyInfo.cs
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.Domin.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\bin\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Application\obj\Debug\netcoreapp2.2\Fonour.Application.csproj.CopyComplete

@@ -1,0 +1,12 @@
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\bin\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.deps.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\bin\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\bin\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\bin\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\bin\Debug\netcoreapp2.2\Fonour.Domin.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.csprojAssemblyReference.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.csproj.CoreCompileInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.AssemblyInfoInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.AssemblyInfo.cs
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.csproj.CopyComplete
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.EntityFramworkCore\obj\Debug\netcoreapp2.2\Fonour.EntityFramworkCore.pdb

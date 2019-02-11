@@ -1,0 +1,11 @@
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.deps.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.csprojAssemblyReference.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.csproj.CoreCompileInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.AssemblyInfoInputs.cache
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.AssemblyInfo.cs
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.runtimeconfig.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.runtimeconfig.dev.json
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.pdb
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.pdb
