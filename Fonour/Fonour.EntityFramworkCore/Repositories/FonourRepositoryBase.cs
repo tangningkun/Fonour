@@ -115,6 +115,7 @@ namespace Fonour.EntityFramworkCore.Repositories
             AttachIfNot(entity);
 
             Table.Remove(entity);
+            Save();
         }
         /// <summary>
         /// 按主键删除实体
@@ -124,6 +125,7 @@ namespace Fonour.EntityFramworkCore.Repositories
         {
             AttachIfNot(Get(id));
             Table.Remove(Get(id));
+            Save();
         }
         /// <summary>
         /// 按功能删除许多实体。 请注意：所有实体都适合给定的谓词
@@ -133,10 +135,19 @@ namespace Fonour.EntityFramworkCore.Repositories
         /// <param name="predicate">过滤实体的条件</param>
         public void Delete(Expression<Func<TEntity, bool>> predicate)
         {
-            foreach (var entity in GetAll().Where(predicate).ToList())
-            {
-                Delete(entity);
-            }
+            Table.Where(predicate).ToList().ForEach(item => _dbContext.Set<TEntity>().Remove(item));
+            Save();
+        }
+        /// <summary>
+        /// 根据条件删除实体
+        /// </summary>
+        /// <param name="where">lambda表达式</param>
+        /// <param name="autoSave">是否自动保存</param>
+        public void Delete(Expression<Func<TEntity, bool>> expression, bool autoSave = true)
+        {
+            Table.Where(expression).ToList().ForEach(item => _dbContext.Set<TEntity>().Remove(item));
+            if (autoSave)
+                Save();
         }
         /// <summary>
         /// 按主键删除实体

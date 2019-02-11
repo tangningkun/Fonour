@@ -7,12 +7,16 @@
 
   <ItemGroup>
     <Compile Remove="wwwroot\lib\bootstrap\**" />
+    <Compile Remove="wwwroot\lib\image\**" />
     <Compile Remove="wwwroot\lib\node_modules\**" />
     <Content Remove="wwwroot\lib\bootstrap\**" />
+    <Content Remove="wwwroot\lib\image\**" />
     <Content Remove="wwwroot\lib\node_modules\**" />
     <EmbeddedResource Remove="wwwroot\lib\bootstrap\**" />
+    <EmbeddedResource Remove="wwwroot\lib\image\**" />
     <EmbeddedResource Remove="wwwroot\lib\node_modules\**" />
     <None Remove="wwwroot\lib\bootstrap\**" />
+    <None Remove="wwwroot\lib\image\**" />
     <None Remove="wwwroot\lib\node_modules\**" />
   </ItemGroup>
 
@@ -20,18 +24,20 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Tools" Version="1.1.0-preview4-final" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\lib\js\" />
     <Folder Include="wwwroot\lib\css\" />
-    <Folder Include="wwwroot\lib\image\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Fonour.Application\Fonour.Application.csproj" />
     <ProjectReference Include="..\Fonour.EntityFramworkCore\Fonour.EntityFramworkCore.csproj" />
+    <ProjectReference Include="..\Fonour.Utility\Fonour.Utility.csproj" />
   </ItemGroup>
 
 </Project>

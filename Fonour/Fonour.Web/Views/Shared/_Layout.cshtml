@@ -314,12 +314,13 @@
                 <!-- Sidebar Menu -->
                 <ul class="sidebar-menu">
                     <li class="header">菜单信息</li>
+                    @await Component.InvokeAsync("Navigation");
                     <!-- （可选）您可以向链接添加图标 -->
-                    <li class="active"><a href="javascript:;"><i class="fa fa-plus"></i> <span>组织机构</span></a></li>
+                    @*<li class="active"><a href="javascript:;"><i class="fa fa-plus"></i> <span>组织机构</span></a></li>
                     <li><a href="javascript:;"><i class="fa fa-plus"></i> <span>角色管理</span></a></li>
                     <li><a href="javascript:;"><i class="fa fa-plus"></i> <span>用户管理</span></a></li>
                     <li><a href="javascript:;"><i class="fa fa-plus"></i> <span>功能管理</span></a></li>
-                    <li><a href="javascript:;"><i class="fa fa-plus"></i> <span>权限管理</span></a></li>
+                    <li><a href="javascript:;"><i class="fa fa-plus"></i> <span>权限管理</span></a></li>*@
                     @*<li class="treeview">
                         <a href="javascript:;">
                             <i class="fa fa-link"></i> <span>Multilevel</span>

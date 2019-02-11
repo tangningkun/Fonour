@@ -9,3 +9,14 @@ F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour
 F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.pdb
 F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.dll
 F:\ASP.NET_COER\Founce\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.pdb
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.deps.json
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.runtimeconfig.json
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.runtimeconfig.dev.json
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\bin\Debug\netcoreapp2.2\Fonour.Domin.pdb
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.csprojAssemblyReference.cache
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.csproj.CoreCompileInputs.cache
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.AssemblyInfoInputs.cache
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.AssemblyInfo.cs
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.dll
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Domin\obj\Debug\netcoreapp2.2\Fonour.Domin.pdb

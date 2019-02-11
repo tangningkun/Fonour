@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿
+
+using Fonour.Application;
 using Fonour.Application.Departments;
 using Fonour.Application.Menus;
 using Fonour.Application.Roles;
@@ -12,11 +11,12 @@ using Fonour.EntityFramworkCore;
 using Fonour.EntityFramworkCore.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using System.IO;
 
 namespace Fonour.Web
 {
@@ -31,6 +31,9 @@ namespace Fonour.Web
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
             builder.AddEnvironmentVariables();
             Configuration = builder.Build();
+
+            //初始化映射关系
+            FonourMapper.Initialize();
         }
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
@@ -72,8 +75,16 @@ namespace Fonour.Web
                 //生产环境异常处理
                 app.UseExceptionHandler("/Shared/Error");
             }
+            //Session服务
+            app.UseSession();
+
             //使用静态文件
             app.UseStaticFiles();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Directory.GetCurrentDirectory())
+            });
             //使用Mvc，设置默认路由
             app.UseMvc(routes =>
             {
@@ -81,9 +92,6 @@ namespace Fonour.Web
                   name: "default",
                   template: "{controller=Login}/{action=Login}/{id?}");
             });
-
-            //初始化数据
-            //SeedData.Initialize(app.ApplicationServices);
         }
     }
 }

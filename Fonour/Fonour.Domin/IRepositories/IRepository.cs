@@ -70,16 +70,20 @@ namespace Fonour.Domin.IRepositories
         //   id:
         //     Primary key of the entity
         void Delete(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Deletes many entities by function. Notice that: All entities fits to given predicate
-        //     are retrieved and deleted. This may cause major performance problems if there
-        //     are too many entities with given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A condition to filter entities
-        void Delete(Expression<Func<TEntity, bool>> predicate);
+        
+        /// <summary>
+        /// 根据条件删除实体
+        /// </summary>
+        /// <param name="where">lambda表达式</param>
+        void Delete(Expression<Func<TEntity, bool>> Expression);
+
+        /// <summary>
+        /// 根据条件删除实体
+        /// </summary>
+        /// <param name="where">lambda表达式</param>
+        /// <param name="autoSave">是否自动保存</param>
+        void Delete(Expression<Func<TEntity, bool>> expression, bool autoSave = true);
+
         //
         // 摘要:
         //     Deletes an entity by primary key.
@@ -419,6 +423,7 @@ namespace Fonour.Domin.IRepositories
         /// <param name="order">排序</param>
         /// <returns></returns>
         IQueryable<TEntity> LoadPageList(int startPage, int pageSize, out int rowCount, Expression<Func<TEntity, bool>> where, Expression<Func<TEntity, object>> order);
+
 
         void Save();
 

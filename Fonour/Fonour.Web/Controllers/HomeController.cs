@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Fonour.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : FonourControllerBase
     {
         public IActionResult Index()
         {
