@@ -1,9 +1,11 @@
 ﻿using Fonour.Domin.Entities;
 using Fonour.Domin.IRepositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Fonour.EntityFramworkCore.Repositories
 {
@@ -22,9 +24,10 @@ namespace Fonour.EntityFramworkCore.Repositories
         /// <param name="userName">用户名</param>
         /// <param name="password">密码</param>
         /// <returns>存在返回用户实体，否则返回NULL</returns>
-        public User CheckUser(string userName, string password)
+        public async Task<User> CheckUser(string userName, string password)
         {
-            return _dbContext.Set<User>().FirstOrDefault(it => it.UserName == userName && it.Password == password);
+            //return _dbContext.Set<User>().FirstOrDefault(it => it.UserName == userName && it.Password == password);
+            return await _dbContext.Set<User>().Where(d => d.UserName == userName && d.Password == password).FirstOrDefaultAsync();
         }
 
         /// <summary>

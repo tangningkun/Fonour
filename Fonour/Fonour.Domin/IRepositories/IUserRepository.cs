@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Fonour.Domin.IRepositories
 {
@@ -16,7 +17,7 @@ namespace Fonour.Domin.IRepositories
         /// <param name="userName">用户名</param>
         /// <param name="password">密码</param>
         /// <returns>存在返回用户实体，否则返回NULL</returns>
-        User CheckUser(string userName, string password);
+        Task<User> CheckUser(string userName, string password);
 
         User GetWithRoles(Guid id);
     }

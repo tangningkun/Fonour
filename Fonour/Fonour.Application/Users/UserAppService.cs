@@ -5,6 +5,7 @@ using Fonour.Domin.IRepositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Fonour.Application.Users
 {
@@ -25,9 +26,9 @@ namespace Fonour.Application.Users
             _repository = userRepository;
         }
 
-        public User CheckUser(string userName, string password)
+        public async  Task<User> CheckUser(string userName, string password)
         {
-            return _repository.CheckUser(userName, password);
+            return await _repository.CheckUser(userName, password);
         }
         public List<UserDto> GetUserByDepartment(Guid departmentId, int startPage, int pageSize, out int rowCount)
         {

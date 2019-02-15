@@ -69,3 +69,4 @@ F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Web\bin\Debug\netco
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Web\bin\Debug\netcoreapp2.2\Fonour.Utility.pdb
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menu\Index.g.cshtml.cs
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Web\obj\Debug\netcoreapp2.2\Razor\Views\Menu\_Edit.g.cshtml.cs
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Web\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Components\Navigation\Default.g.cshtml.cs

@@ -15,3 +15,4 @@ F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Utility\obj\Debug\n
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.AssemblyInfo.cs
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.dll
 F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.pdb
+F:\1-A工作\工作\ASP.NET_CORE\Fonous\Fonour\Fonour\Fonour.Utility\obj\Debug\netcoreapp2.2\Fonour.Utility.csprojAssemblyReference.cache
