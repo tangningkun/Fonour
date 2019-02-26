@@ -5,13 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using TsBlog.Domain.Entities;
 using TsBlog.Repositories.PostRepositorys;
+using TsBlog.Repositories.Repository;
 
 namespace TsBlog.Services.PostAppServices
 {
     public class PostAppService : IPostAppService
     {
-        private readonly IPostRepository _postRepository;
-        public PostAppService(IPostRepository postRepository)
+        private readonly IRepository<Post> _postRepository;
+        public PostAppService(IRepository<Post> postRepository)
         {
             _postRepository = postRepository;
         }
@@ -40,7 +41,7 @@ namespace TsBlog.Services.PostAppServices
             return _postRepository.FindById(id);
         }
 
-        public int Insert(Post entity)
+        public long Insert(Post entity)
         {
             return _postRepository.Insert(entity);
         }

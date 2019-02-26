@@ -4,13 +4,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using TsBlog.Repositories.Dependency;
 
 namespace TsBlog.Repositories.Repository
 {
     /// <summary>
     /// 查询反省基类
     /// </summary>
-    public abstract class GenericRepository<T> : IRepository<T> where T : class, new()
+    public abstract class GenericRepository<T> : IDependency, IRepository<T> where T : class, new()
     {
         #region IRepository <T>的实现
 
