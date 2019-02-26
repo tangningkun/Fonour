@@ -13,6 +13,7 @@ using TsBlog.Services.PostAppServices;
 using System.Reflection;
 using System.Web.Compilation;
 using TsBlog.Repositories.Dependency;
+using Autofac.Features.ResolveAnything;
 
 namespace TsBlog.Frontend
 {
@@ -43,38 +44,29 @@ namespace TsBlog.Frontend
             //注册仓储层服务
             //builder.RegisterType<PostRepository>().As<IPostRepository>();
 
-            #region 使用反射加载程序集修改前的写法
             //注册基于接口约束的实体
-            //var assembly = AppDomain.CurrentDomain.GetAssemblies();
-            //builder.RegisterAssemblyTypes(assembly)
-            //    .Where(
-            //        t => t.GetInterfaces()
-            //            .Any(i => i.IsAssignableFrom(typeof(IDependency)))
-            //    )
-            //    .AsImplementedInterfaces()
-            //    .InstancePerDependency();
-            #endregion
-            //注册仓储层服务
-            //builder.RegisterType<PostRepository>().As<IPostRepository>();
-            //注册基于接口约束的实体
-            //var assembly = AppDomain.CurrentDomain.GetAssemblies();
-
-            var assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>()
-                .Where(assembly => assembly.GetTypes().FirstOrDefault(type => type.GetInterfaces().Contains(typeof(IDependency))) != null);
-
-            builder.RegisterAssemblyTypes(assemblies.ToArray())
+            var assembly = AppDomain.CurrentDomain.GetAssemblies();
+            builder.RegisterAssemblyTypes(assembly)
+                .Where(
+                    t => t.GetInterfaces()
+                        .Any(i => i.IsAssignableFrom(typeof(IDependency)))
+                )
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
+            //builder.RegisterGeneric(typeof(GenericRepository<>))
+            //    .As(typeof(IRepository<>));
+            //builder.RegisterGeneric(typeof(GenericService<>))
+            //    .As(typeof(IService<>));
 
-
-
+            //builder.RegisterGeneric(typeof(GenericRepository<>));
+            //builder.RegisterGeneric(typeof(GenericService<>));
 
             //注册服务层服务
-            builder.RegisterType<PostAppService>().As<IPostAppService>();
+            //builder.RegisterType<PostService>().As<IPostService>();
 
             //注册过滤器
             builder.RegisterFilterProvider();
-
+            builder.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
             var container = builder.Build();
 
             //设置依赖注入解析器

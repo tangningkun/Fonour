@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServices\GenericAppService.cs" />
+    <Compile Include="AppServices\IAppService.cs" />
     <Compile Include="PostAppServices\IPostAppService.cs" />
     <Compile Include="PostAppServices\PostAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
