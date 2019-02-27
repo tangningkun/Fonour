@@ -24,7 +24,7 @@ namespace TsBlog.Frontend
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            //BundleConfig.RegisterBundles(BundleTable.Bundles);AutofacRegister();
+            //BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             AutofacRegister();
 
@@ -43,26 +43,19 @@ namespace TsBlog.Frontend
 
             //注册仓储层服务
             //builder.RegisterType<PostRepository>().As<IPostRepository>();
-
             //注册基于接口约束的实体
-            var assembly = AppDomain.CurrentDomain.GetAssemblies();
-            builder.RegisterAssemblyTypes(assembly)
+            //var assembly = AppDomain.CurrentDomain.GetAssemblies();
+
+            var assemblies = BuildManager.GetReferencedAssemblies().Cast<Assembly>()
                 .Where(
-                    t => t.GetInterfaces()
-                        .Any(i => i.IsAssignableFrom(typeof(IDependency)))
-                )
+                    assembly =>
+                        assembly.GetTypes().FirstOrDefault(type => type.GetInterfaces().Contains(typeof(IDependency))) !=
+                        null
+                );
+
+            builder.RegisterAssemblyTypes(assemblies.ToArray())
                 .AsImplementedInterfaces()
                 .InstancePerDependency();
-            //builder.RegisterGeneric(typeof(GenericRepository<>))
-            //    .As(typeof(IRepository<>));
-            //builder.RegisterGeneric(typeof(GenericService<>))
-            //    .As(typeof(IService<>));
-
-            //builder.RegisterGeneric(typeof(GenericRepository<>));
-            //builder.RegisterGeneric(typeof(GenericService<>));
-
-            //注册服务层服务
-            //builder.RegisterType<PostService>().As<IPostService>();
 
             //注册过滤器
             builder.RegisterFilterProvider();

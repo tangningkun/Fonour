@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SqlSugar, Version=4.9.9.1, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,8 @@
     <Compile Include="PostAppServices\IPostAppService.cs" />
     <Compile Include="PostAppServices\PostAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAppServices\IUserAppService.cs" />
+    <Compile Include="UserAppServices\UserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TsBlog.Domain\TsBlog.Domain.csproj">

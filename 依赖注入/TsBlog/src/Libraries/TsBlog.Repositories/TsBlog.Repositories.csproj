@@ -64,14 +64,17 @@
     <Compile Include="DataConverter.cs" />
     <Compile Include="Dependency\IDependency.cs" />
     <Compile Include="MySqlHelper.cs" />
+    <Compile Include="PagedList\IPagedList.cs" />
+    <Compile Include="PagedList\PagedList.cs" />
     <Compile Include="PostRepositorys\IPostRepository.cs" />
     <Compile Include="PostRepositorys\PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="TsBlogDbConfig.cs" />
     <Compile Include="TsBlogDbFactory.cs" />
+    <Compile Include="UserRepositorys\IUserRepository.cs" />
+    <Compile Include="UserRepositorys\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

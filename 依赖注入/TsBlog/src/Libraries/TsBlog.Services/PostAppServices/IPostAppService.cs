@@ -12,7 +12,12 @@ namespace TsBlog.Services.PostAppServices
 
     public interface IPostAppService : IDependency, IAppService<Post>
     {
-
+        /// <summary>
+        /// 查询首页文章列表
+        /// </summary>
+        /// <param name="limit">要查询的记录数</param>
+        /// <returns></returns>
+        IEnumerable<Post> FindHomePagePosts(int limit = 20);
     }
 
     //public interface IPostAppService

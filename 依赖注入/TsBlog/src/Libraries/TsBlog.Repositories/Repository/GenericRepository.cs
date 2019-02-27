@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TsBlog.Repositories.Dependency;
+using TsBlog.Repositories.PagedList;
 
 namespace TsBlog.Repositories.Repository
 {
@@ -48,11 +49,16 @@ namespace TsBlog.Repositories.Repository
         /// <param name="predicate">条件表达式树</param>
         /// <param name="orderBy">排序</param>
         /// <returns>泛型实体集合</returns>
-        public IEnumerable<T> FindListByClause(Expression<Func<T, bool>> predicate, string orderBy)
+        public IEnumerable<T> FindListByClause(Expression<Func<T, bool>> predicate, string orderBy = "")
         {
             using (var db = TsBlogDbFactory.GetSqlSugarClient())
             {
-                var entities = db.Queryable<T>().Where(predicate).ToList();
+                var query = db.Queryable<T>().Where(predicate);
+                if (!string.IsNullOrEmpty(orderBy))
+                {
+                    query = query.OrderBy(orderBy);
+                }
+                var entities = query.ToList();
                 return entities;
             }
         }
@@ -154,6 +160,25 @@ namespace TsBlog.Repositories.Repository
             {
                 var i = db.Deleteable<T>().In(ids).ExecuteCommand();
                 return i > 0;
+            }
+        }
+
+        /// <summary>
+        /// 根据条件查询分页数据
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="pageIndex">当前页面索引</param>
+        /// <param name="pageSize">分布大小</param>
+        /// <returns></returns>
+        public IPagedList<T> FindPagedList(Expression<Func<T, bool>> predicate, string orderBy = "", int pageIndex = 1, int pageSize = 20)
+        {
+            using (var db = TsBlogDbFactory.GetSqlSugarClient())
+            {
+                var totalCount = 0;
+                var page = db.Queryable<T>().OrderBy(orderBy).ToPageList(pageIndex, pageSize, ref totalCount);
+                var list = new PagedList<T>(page, pageIndex, pageSize, totalCount);
+                return list;
             }
         }
 

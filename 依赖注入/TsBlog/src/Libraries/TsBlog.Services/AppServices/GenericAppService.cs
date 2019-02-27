@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using TsBlog.Repositories.Dependency;
+using TsBlog.Repositories.PagedList;
 using TsBlog.Repositories.Repository;
 
 namespace TsBlog.Services.AppServices
@@ -43,7 +44,7 @@ namespace TsBlog.Services.AppServices
         /// <param name="predicate">条件表达式树</param>
         /// <param name="orderBy">排序</param>
         /// <returns>泛型实体集合</returns>
-        public IEnumerable<T> FindListByClause(Expression<Func<T, bool>> predicate, string orderBy)
+        public IEnumerable<T> FindListByClause(Expression<Func<T, bool>> predicate, string orderBy = "")
         {
             return _repository.FindListByClause(predicate, orderBy);
         }
@@ -118,5 +119,17 @@ namespace TsBlog.Services.AppServices
             return _repository.DeleteByIds(ids);
         }
 
+        /// <summary>
+        /// 根据条件查询分页数据
+        /// </summary>
+        /// <param name="predicate"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="pageIndex">当前页面索引</param>
+        /// <param name="pageSize">分布大小</param>
+        /// <returns></returns>
+        public IPagedList<T> FindPagedList(Expression<Func<T, bool>> predicate, string orderBy = "", int pageIndex = 1, int pageSize = 20)
+        {
+            return _repository.FindPagedList(predicate, orderBy, pageIndex, pageSize);
+        }
     }
 }

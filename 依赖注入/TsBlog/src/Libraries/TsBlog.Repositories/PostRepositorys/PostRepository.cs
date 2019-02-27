@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,11 +12,22 @@ namespace TsBlog.Repositories.PostRepositorys
     /// <summary>
     /// POST表的数据库操作类
     /// </summary>
-    public class PostRepository : GenericRepository<Post>
+    public class PostRepository : GenericRepository<Post>, IPostRepository
     {
-
+        /// <summary>
+        /// 查询首页文章列表
+        /// </summary>
+        /// <param name="limit">要查询的记录数</param>
+        /// <returns></returns>
+        public IEnumerable<Post> FindHomePagePosts(int limit = 20)
+        {
+            using (var db = TsBlogDbFactory.GetSqlSugarClient())
+            {
+                var list = db.Queryable<Post>().OrderBy(x => x.Id, OrderByType.Desc).Take(limit).ToList();
+                return list;
+            }
+        }
     }
-
     /// <summary>
     /// POST表的数据库操作类
     /// </summary>
