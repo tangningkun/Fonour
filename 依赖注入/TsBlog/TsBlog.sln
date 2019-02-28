@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F72B8E50-CD3F-4A55-9CFD-C539727E5675}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{FB004D48-5FCB-42C4-8ABA-41FF143A952B}"
+	ProjectSection(SolutionItems) = preProject
+		ionic.ico = ionic.ico
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TsBlog.Domain", "src\Libraries\TsBlog.Domain\TsBlog.Domain.csproj", "{C409C434-D107-4AA7-8863-8F171548E641}"
 EndProject
