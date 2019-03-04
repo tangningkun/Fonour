@@ -150,8 +150,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\app\home\index.js" />
     <Content Include="Assets\css\site.css" />
     <Content Include="Assets\app\main.js" />
+    <Content Include="Assets\image\bg.png" />
+    <Content Include="Assets\image\qq.png" />
+    <Content Include="Assets\image\sina.png" />
+    <Content Include="Assets\image\wechat.png" />
     <Content Include="Assets\lib\config.js" />
     <Content Include="Assets\lib\require.js" />
     <Content Include="Assets\node_modules\.bin\r.js" />
