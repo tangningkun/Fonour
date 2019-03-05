@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

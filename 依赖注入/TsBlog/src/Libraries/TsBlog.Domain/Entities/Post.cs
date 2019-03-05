@@ -11,14 +11,14 @@ namespace TsBlog.Domain.Entities
     /// 博文实体类
     /// </summary>
     [SugarTable("tb_post")]
-    public class Post
+    public class Post:Entity
     {
         /// <summary>
         /// ID
         /// </summary>
         [SugarColumn(IsIdentity = true, IsPrimaryKey = true)]
         //==>则是实体属性与表字段的映射配置，更多表和属性的映射配置请看官方文档，地址：http://www.codeisbug.com/Doc/8/1141
-        public int Id { get; set; }
+        public Guid PostId { get; set; }
         /// <summary>
         /// 标题
         /// </summary>
