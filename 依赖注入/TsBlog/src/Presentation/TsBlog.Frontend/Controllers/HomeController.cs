@@ -15,14 +15,17 @@ namespace TsBlog.Frontend.Controllers
     public class HomeController : Controller
     {
         private readonly IPostAppService _postAppService;
-        public HomeController(IPostAppService postAppService)
+        private readonly ITsBlogPostAppService _tsBlogPostAppService;
+        public HomeController(IPostAppService postAppService, ITsBlogPostAppService tsBlogPostAppService)
         {
             _postAppService = postAppService;
+            _tsBlogPostAppService = tsBlogPostAppService;
         }
         public ActionResult Index(int? page)
         {
             //var list = _postAppService.FindHomePagePosts();
             //var model = list.Select(x => x.ToModel().FormatPostViewModel());
+            var query = _tsBlogPostAppService.GetAll();
             page = page ?? 1;
             var list = _postAppService.FindPagedList(x => !x.IsDeleted && x.AllowShow, pageIndex: (int)page, pageSize: 10);
             var model = list.Select(x => x.ToModel().FormatPostViewModel());

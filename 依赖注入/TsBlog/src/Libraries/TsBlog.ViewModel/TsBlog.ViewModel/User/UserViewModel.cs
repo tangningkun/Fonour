@@ -11,7 +11,7 @@ namespace TsBlog.ViewModel.User
     /// </summary>
     public class UserViewModel
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string LoginName { get; set; }
         public string Password { get; set; }
         public string RealName { get; set; }

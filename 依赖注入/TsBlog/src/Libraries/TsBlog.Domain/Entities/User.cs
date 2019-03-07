@@ -7,10 +7,9 @@ using System.Threading.Tasks;
 
 namespace TsBlog.Domain.Entities
 {
-    [SugarTable("tb_user")]
+    [SugarTable("users")]
     public class User:Entity
     {
-        [SugarColumn(IsIdentity = true, IsPrimaryKey = true)]
         public Guid UserId { get; set; }
         public string LoginName { get; set; }
         public string Password { get; set; }

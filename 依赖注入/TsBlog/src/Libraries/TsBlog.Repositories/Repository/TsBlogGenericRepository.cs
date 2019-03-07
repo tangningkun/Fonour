@@ -148,7 +148,8 @@ namespace TsBlog.Repositories.Repository
         /// <param name="id">实体的主键</param>
         public async Task DeleteAsync(TPrimaryKey id)
         {
-            await Task.Run(() => db.Remove(Get(id)));
+            db.Remove(Get(id));
+            await _dbContext.SaveChangesAsync();
         }
         /// <summary>
         /// 按功能删除许多实体。 请注意：所有实体都适合给定的谓词
@@ -273,10 +274,14 @@ namespace TsBlog.Repositories.Repository
         //   entity:
         //     Inserted entity
 
-        public TEntity Insert(TEntity entity)
+        public void Insert(TEntity entity)
         {
-            var result = db.Add(entity);
-            return result.Entity;
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            db.Add(entity);
+            _dbContext.SaveChanges();
         }
         /// <summary>
         /// 插入一个新实体并获取它的ID。 可能需要保存当前单位
@@ -286,7 +291,11 @@ namespace TsBlog.Repositories.Repository
         /// <returns>实体Id</returns>
         public TPrimaryKey InsertAndGetId(TEntity entity)
         {
-            entity = Insert(entity);
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            entity = db.Add(entity);
             _dbContext.SaveChanges();
             return entity.Id;
         }
@@ -297,7 +306,7 @@ namespace TsBlog.Repositories.Repository
         /// <returns>返回实体得ID</returns>
         public async Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity)
         {
-            entity = await InsertAsync(entity);
+            entity = db.Add(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
         }
@@ -306,21 +315,26 @@ namespace TsBlog.Repositories.Repository
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns>插入的实体</returns>
-        public async Task<TEntity> InsertAsync(TEntity entity)
+        public async Task InsertAsync(TEntity entity)
         {
-            var result = await Task.Run(()=> db.Add(entity));
-            return result.Entity;
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            db.Add(entity);
+            await _dbContext.SaveChangesAsync();
         }
+
         /// <summary>
         /// 根据Id的值插入或更新给定实体
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns>实体</returns>
-        public TEntity InsertOrUpdate(TEntity entity)
+        public void InsertOrUpdate(TEntity entity)
         {
             if (Get(entity.Id) != null)
-                return Update(entity);
-            return Insert(entity);
+                Update(entity);
+            Insert(entity);
         }
         /// <summary>
         /// 根据Id的值插入或更新给定实体.也返回的Id
@@ -330,7 +344,7 @@ namespace TsBlog.Repositories.Repository
         /// <returns>返回实体ID</returns>
         public TPrimaryKey InsertOrUpdateAndGetId(TEntity entity)
         {
-            entity = InsertOrUpdate(entity);
+            InsertOrUpdate(entity);
             _dbContext.SaveChanges();
             return entity.Id;
         }
@@ -342,7 +356,7 @@ namespace TsBlog.Repositories.Repository
         /// <returns>返回实体得ID</returns>
         public async Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity)
         {
-            entity = await InsertOrUpdateAsync(entity);
+            await InsertOrUpdateAsync(entity);
             await _dbContext.SaveChangesAsync();
             return entity.Id;
         }
@@ -351,12 +365,13 @@ namespace TsBlog.Repositories.Repository
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns>实体</returns>
-        public async Task<TEntity> InsertOrUpdateAsync(TEntity entity)
+        public async Task InsertOrUpdateAsync(TEntity entity)
         {
             if (Get(entity.Id) != null)
-                return await UpdateAsync(entity);
-            return await InsertAsync(entity);
+                await UpdateAsync(entity);
+            await InsertAsync(entity);
         }
+
         #endregion
 
 
@@ -429,11 +444,13 @@ namespace TsBlog.Repositories.Repository
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public TEntity Update(TEntity entity)
+        public void Update(TEntity entity)
         {
-            AttachIfNot(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            return entity;
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            _dbContext.SaveChanges();
         }
         /// <summary>
         /// 更新现有实体
@@ -441,12 +458,18 @@ namespace TsBlog.Repositories.Repository
         /// <param name="id">Id</param>
         /// <param name="updateAction">可用于更改实体值的操作</param>
         /// <returns>更新的实体</returns>
-        public TEntity Update(TPrimaryKey id, Action<TEntity> updateAction)
+        public void Update(TPrimaryKey id, Action<TEntity> updateAction)
         {
             //dbContext.Configuration.AutoDetectChangesEnabled = true;
             var _model = db.Where(d => d.Id.Equals(id)).FirstOrDefault();
             updateAction(_model);
-            return Get(id);
+            TEntity entity = Get(id);
+
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            _dbContext.SaveChanges();
         }
         /// <summary>
         /// 更新现有实体
@@ -454,22 +477,30 @@ namespace TsBlog.Repositories.Repository
         /// <param name="id">实体的ID</param>
         /// <param name="updateAction">可用于更改实体值的操作</param>
         /// <returns>更新了实体</returns>
-        public async Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
+        public async Task UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction)
         {
             var _model = await db.Where(d => d.Id.Equals(id)).FirstOrDefaultAsync();
             await updateAction(_model);
-            return Get(id);
+            TEntity entity = Get(id);
+
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            await _dbContext.SaveChangesAsync();
         }
         /// <summary>
         /// 更新现有实体
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns>更新的实体</returns>
-        public Task<TEntity> UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            AttachIfNot(entity);
-            _dbContext.Entry(entity).State = EntityState.Modified;
-            return Task.FromResult(entity);
+            if (entity == null)
+            {
+                throw new ArgumentNullException(nameof(entity));
+            }
+            await _dbContext.SaveChangesAsync();
         }
         #endregion
 
@@ -512,5 +543,16 @@ namespace TsBlog.Repositories.Repository
             }
         }
 
+    }
+
+    /// <summary>
+    /// 主键为Guid类型的仓储基类
+    /// </summary>
+    /// <typeparam name="TEntity">实体类型</typeparam>
+    public abstract class TsBlogGenericRepository<TEntity> : TsBlogGenericRepository<TEntity, Guid> where TEntity : Entity
+    {
+        public TsBlogGenericRepository(TsBlogDbContext dbContext) : base(dbContext)
+        {
+        }
     }
 }

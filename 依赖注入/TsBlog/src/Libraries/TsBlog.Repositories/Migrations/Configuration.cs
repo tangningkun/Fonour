@@ -5,12 +5,13 @@ namespace TsBlog.Repositories.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
+    using TsBlog.Repositories.Migrations.SeedData;
 
     internal sealed class Configuration : DbMigrationsConfiguration<TsBlog.Repositories.TsBlogDbContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());//设置Sql生成器为Mysql的
         }
 
@@ -20,6 +21,7 @@ namespace TsBlog.Repositories.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+            new InitialHostDbBuilder(context).Create();
         }
     }
 }

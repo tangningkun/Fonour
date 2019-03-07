@@ -14,7 +14,7 @@ namespace TsBlog.ViewModel.Post
         /// <summary>
         /// ID
         /// </summary>
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         /// <summary>
         /// 标题
         /// </summary>

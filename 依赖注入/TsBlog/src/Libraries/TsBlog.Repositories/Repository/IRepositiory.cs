@@ -12,59 +12,39 @@ namespace TsBlog.Repositories.Repository
     {
 
     }
-    public interface IRepositiory<TEntity, TPrimaryKey> : IRepositiory where TEntity : Entity<TPrimaryKey>
+    public interface IRepositiory<TEntity, TPrimaryKey>: IRepositiory where TEntity : Entity<TPrimaryKey>
     {
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository.
-        //
-        // 返回结果:
-        //     Count of entities
+        /// <summary>
+        /// 获取此存储库中所有实体的计数
+        /// </summary>
+        /// <returns>实体数量</returns>
         int Count();
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository based on given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A method to filter count
-        //
-        // 返回结果:
-        //     Count of entities
+        /// <summary>
+        /// 根据给定的条件获取此存储库中所有实体的计数
+        /// </summary>
+        /// <param name="predicate">过滤计数的方法</param>
+        /// <returns>实体数量</returns>
         int Count(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository based on given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A method to filter count
-        //
-        // 返回结果:
-        //     Count of entities
+        /// <summary>
+        /// 根据给定的条件获取此存储库中所有实体的计数
+        /// </summary>
+        /// <param name="predicate">过滤计数的方法</param>
+        /// <returns>实体数量</returns>
         Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository.
-        //
-        // 返回结果:
-        //     Count of entities
+        /// <summary>
+        /// 获取此存储库中所有实体的计数
+        /// </summary>
+        /// <returns>实体数量</returns>
         Task<int> CountAsync();
-        //
-        // 摘要:
-        //     Deletes an entity.
-        //
-        // 参数:
-        //   entity:
-        //     Entity to be deleted
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="entity">要删除的实体</param>
         void Delete(TEntity entity);
-        //
-        // 摘要:
-        //     Deletes an entity by primary key.
-        //
-        // 参数:
-        //   id:
-        //     Primary key of the entity
+        /// <summary>
+        /// 按主键删除实体
+        /// </summary>
+        /// <param name="id">实体的主键</param>
         void Delete(TPrimaryKey id);
 
         /// <summary>
@@ -88,326 +68,236 @@ namespace TsBlog.Repositories.Repository
         //   id:
         //     Primary key of the entity
         Task DeleteAsync(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Deletes many entities by function. Notice that: All entities fits to given predicate
-        //     are retrieved and deleted. This may cause major performance problems if there
-        //     are too many entities with given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A condition to filter entities
+        /// <summary>
+        /// 按功能删除许多实体。 请注意：所有实体都适合给定的谓词
+        /// 被检索并删除。 如果存在这可能会导致严重的性能问题
+        /// 包含给定谓词的实体太多了
+        /// </summary>
+        /// <param name="predicate">过滤实体的条件</param>
         Task DeleteAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Deletes an entity.
-        //
-        // 参数:
-        //   entity:
-        //     Entity to be deleted
+        /// <summary>
+        /// 删除实体
+        /// </summary>
+        /// <param name="entity">要删除实体</param>
+        /// <returns></returns>
         Task DeleteAsync(TEntity entity);
-        //
-        // 摘要:
-        //     Gets an entity with given given predicate or null if not found.
-        //
-        // 参数:
-        //   predicate:
-        //     Predicate to filter entities
+
+        /// <summary>
+        /// 获取具有给定给定谓词的实体，如果未找到则获取null
+        /// </summary>
+        /// <param name="predicate">谓词来过滤实体</param>
+        /// <returns>实体或null</returns>
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets an entity with given primary key or null if not found.
-        //
-        // 参数:
-        //   id:
-        //     Primary key of the entity to get
-        //
-        // 返回结果:
-        //     Entity or null
+
+        /// <summary>
+        /// 获取具有给定主键的实体，如果未找到则获取null
+        /// </summary>
+        /// <param name="id">要获取的实体的主键</param>
+        /// <returns>实体或null/returns>
         TEntity FirstOrDefault(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Gets an entity with given given predicate or null if not found.
-        //
-        // 参数:
-        //   predicate:
-        //     Predicate to filter entities
+
+        /// <summary>
+        /// 获取具有给定给定谓词的实体，如果未找到则获取null
+        /// </summary>
+        /// <param name="predicate">过滤实体的条件</param>
+        /// <returns>实体</returns>
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets an entity with given primary key or null if not found.
-        //
-        // 参数:
-        //   id:
-        //     Primary key of the entity to get
-        //
-        // 返回结果:
-        //     Entity or null
+
+        /// <summary>
+        /// 获取具有给定主键的实体，如果未找到则获取null
+        /// </summary>
+        /// <param name="id">获取的实体的主键</param>
+        /// <returns>实体</returns>
         Task<TEntity> FirstOrDefaultAsync(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Gets an entity with given primary key.
-        //
-        // 参数:
-        //   id:
-        //     Primary key of the entity to get
-        //
-        // 返回结果:
-        //     Entity
+        /// <summary>
+        /// 获取具有给定主键的实体
+        /// </summary>
+        /// <param name="id">获取的实体的主键</param>
+        /// <returns>实体</returns>
         TEntity Get(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Used to get a IQueryable that is used to retrieve entities from entire table.
-        //
-        // 返回结果:
-        //     IQueryable to be used to select entities from database
+
+        /// <summary>
+        /// 用于获取用于从整个表中检索实体的IQueryable。
+        /// </summary>
+        /// <returns>IQueryable用于从数据库中选择实体</returns>
         IQueryable<TEntity> GetAll();
-        //
-        // 摘要:
-        //     Used to get a IQueryable that is used to retrieve entities from entire table.
-        //     One or more
-        //
-        // 参数:
-        //   propertySelectors:
-        //     A list of include expressions.
-        //
-        // 返回结果:
-        //     IQueryable to be used to select entities from database
+
+        /// <summary>
+        /// 用于获取用于从整个表中检索实体的IQueryable一个或多个
+        /// </summary>
+        /// <param name="propertySelectors">包含表达式的列表</param>
+        /// <returns>IQueryable用于从数据库中选择实体</returns>
         IQueryable<TEntity> GetAllIncluding(params Expression<Func<TEntity, object>>[] propertySelectors);
-        //
-        // 摘要:
-        //     Used to get all entities based on given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A condition to filter entities
-        //
-        // 返回结果:
-        //     List of all entities
+
+        /// <summary>
+        /// 用于根据给定的谓词获取所有实体
+        /// </summary>
+        /// <param name="predicate">过滤实体的条件</param>
+        /// <returns>实体</returns>
         List<TEntity> GetAllList(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Used to get all entities.
-        //
-        // 返回结果:
-        //     List of all entities
+        /// <summary>
+        /// 用于获取所有实体
+        /// </summary>
+        /// <returns>实体</returns>
         List<TEntity> GetAllList();
-        //
-        // 摘要:
-        //     Used to get all entities based on given predicate.
-        //
-        // 参数:
-        //   predicate:
-        //     A condition to filter entities
-        //
-        // 返回结果:
-        //     List of all entities
+
+        /// <summary>
+        /// 用于根据给定的谓词获取所有实体
+        /// </summary>
+        /// <param name="predicate">过滤实体的条件</param>
+        /// <returns>实体</returns>
         Task<List<TEntity>> GetAllListAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Used to get all entities.
-        //
-        // 返回结果:
-        //     List of all entities
+
+        /// <summary>
+        /// 用于获取所有实体
+        /// </summary>
+        /// <returns>实体</returns>
         Task<List<TEntity>> GetAllListAsync();
-        //
-        // 摘要:
-        //     Gets an entity with given primary key.
-        //
-        // 参数:
-        //   id:
-        //     Primary key of the entity to get
-        //
-        // 返回结果:
-        //     Entity
+
+        /// <summary>
+        /// 获取具有给定主键的实体
+        /// </summary>
+        /// <param name="id">要获取的实体的主键</param>
+        /// <returns>实体</returns>
         Task<TEntity> GetAsync(TPrimaryKey id);
-        //
-        // 摘要:
-        //     Inserts a new entity.
-        //
-        // 参数:
-        //   entity:
-        //     Inserted entity
-        TEntity Insert(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts a new entity and gets it's Id. It may require to save current unit of
-        //     work to be able to retrieve id.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        //
-        // 返回结果:
-        //     Id of the entity
+
+        /// <summary>
+        /// 插入一个新实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        void Insert(TEntity entity);
+
+        /// <summary>
+        /// 插入一个新实体并获取它的ID。 可能需要保存当前单位
+        /// 能够检索id
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>实体Id</returns>
         TPrimaryKey InsertAndGetId(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts a new entity and gets it's Id. It may require to save current unit of
-        //     work to be able to retrieve id.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        //
-        // 返回结果:
-        //     Id of the entity
+
+        /// <summary>
+        /// 插入一个新实体并获取它的ID。 可能需要保存当前单位能够检索id
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>返回实体得ID</returns>
         Task<TPrimaryKey> InsertAndGetIdAsync(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts a new entity.
-        //
-        // 参数:
-        //   entity:
-        //     Inserted entity
-        Task<TEntity> InsertAsync(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts or updates given entity depending on Id's value.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        TEntity InsertOrUpdate(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts or updates given entity depending on Id's value. Also returns Id of the
-        //     entity. It may require to save current unit of work to be able to retrieve id.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        //
-        // 返回结果:
-        //     Id of the entity
+
+        /// <summary>
+        /// 插入一个新实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>插入的实体</returns>
+        Task InsertAsync(TEntity entity);
+
+        /// <summary>
+        /// 根据Id的值插入或更新给定实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>实体</returns>
+        void InsertOrUpdate(TEntity entity);
+
+        /// <summary>
+        /// 根据Id的值插入或更新给定实体.也返回的Id
+        /// 实体.可能需要保存当前工作单元才能检索id。
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>返回实体ID</returns>
         TPrimaryKey InsertOrUpdateAndGetId(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts or updates given entity depending on Id's value. Also returns Id of the
-        //     entity. It may require to save current unit of work to be able to retrieve id.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        //
-        // 返回结果:
-        //     Id of the entity
+
+        /// <summary>
+        /// 根据Id的值插入或更新给定实体.也返回的Id
+        /// 实体.可能需要保存当前工作单元才能检索id。
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>返回实体得ID</returns>
         Task<TPrimaryKey> InsertOrUpdateAndGetIdAsync(TEntity entity);
-        //
-        // 摘要:
-        //     Inserts or updates given entity depending on Id's value.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        Task<TEntity> InsertOrUpdateAsync(TEntity entity);
+
+        /// <summary>
+        /// 根据Id的值插入或更新给定实体。
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>实体</returns>
+        Task InsertOrUpdateAsync(TEntity entity);
 
 
 
 
 
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository based on given predicate (use this
-        //     overload if expected return value is greather than System.Int32.MaxValue).
-        //
-        // 参数:
-        //   predicate:
-        //     A method to filter count
-        //
-        // 返回结果:
-        //     Count of entities
+        /// <summary>
+        /// 根据给定谓词获取此存储库中所有实体的计数（使用此方法）
+                /// 如果预期的返回值比System.Int32.MaxValue强，则重载。
+        /// </summary>
+        /// <param name="predicate">过滤计数的方法</param>
+        /// <returns>实体得数量</returns>
         long LongCount(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository (use if expected return value is
-        //     greather than System.Int32.MaxValue.
-        //
-        // 返回结果:
-        //     Count of entities
+
+        /// <summary>
+        /// 根据给定谓词获取此存储库中所有实体的计数（使用此方法）
+                /// 如果预期的返回值比System.Int32.MaxValue强，则重载。
+        /// </summary>
+        /// <returns>实体得数量</returns>
         long LongCount();
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository (use if expected return value is
-        //     greather than System.Int32.MaxValue.
-        //
-        // 返回结果:
-        //     Count of entities
+
+        /// <summary>
+        /// 根据给定谓词获取此存储库中所有实体的计数（使用此方法）
+                /// 如果预期的返回值比System.Int32.MaxValue强，则重载。
+        /// </summary>
+        /// <returns>实体得数量</returns>
         Task<long> LongCountAsync();
-        //
-        // 摘要:
-        //     Gets count of all entities in this repository based on given predicate (use this
-        //     overload if expected return value is greather than System.Int32.MaxValue).
-        //
-        // 参数:
-        //   predicate:
-        //     A method to filter count
-        //
-        // 返回结果:
-        //     Count of entities
+
+        /// <summary>
+        /// 根据给定谓词获取此存储库中所有实体的计数（使用此方法）
+                /// 如果预期的返回值比System.Int32.MaxValue强，则重载。
+        /// </summary>
+        /// <param name="predicate">过滤计数的方法</param>
+        /// <returns>实体得数量</returns>
         Task<long> LongCountAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets exactly one entity with given predicate. Throws exception if no entity or
-        //     more than one entity.
-        //
-        // 参数:
-        //   predicate:
-        //     Entity
+
+        /// <summary>
+        /// 获取具有给定谓词的一个实体。 如果没有实体或者引发异常
+        /// 多个实体
+        /// </summary>
+        /// <param name="predicate">查询条件</param>
+        /// <returns>实体</returns>
         TEntity Single(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Gets exactly one entity with given predicate. Throws exception if no entity or
-        //     more than one entity.
-        //
-        // 参数:
-        //   predicate:
-        //     Entity
+
+        /// <summary>
+        /// 获取具有给定谓词的一个实体。 如果没有实体或者引发异常
+        /// 多个实体
+        /// </summary>
+        /// <param name="predicate">查询条件</param>
+        /// <returns>实体</returns>
         Task<TEntity> SingleAsync(Expression<Func<TEntity, bool>> predicate);
-        //
-        // 摘要:
-        //     Updates an existing entity.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        TEntity Update(TEntity entity);
-        //
-        // 摘要:
-        //     Updates an existing entity.
-        //
-        // 参数:
-        //   id:
-        //     Id of the entity
-        //
-        //   updateAction:
-        //     Action that can be used to change values of the entity
-        //
-        // 返回结果:
-        //     Updated entity
-        TEntity Update(TPrimaryKey id, Action<TEntity> updateAction);
-        //
-        // 摘要:
-        //     Updates an existing entity.
-        //
-        // 参数:
-        //   id:
-        //     Id of the entity
-        //
-        //   updateAction:
-        //     Action that can be used to change values of the entity
-        //
-        // 返回结果:
-        //     Updated entity
-        Task<TEntity> UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction);
-        //
-        // 摘要:
-        //     Updates an existing entity.
-        //
-        // 参数:
-        //   entity:
-        //     Entity
-        Task<TEntity> UpdateAsync(TEntity entity);
+
+        /// <summary>
+        /// 更新现有实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns></returns>
+        void Update(TEntity entity);
+
+        /// <summary>
+        /// 更新现有实体
+        /// </summary>
+        /// <param name="id">Id</param>
+        /// <param name="updateAction">可用于更改实体值的操作</param>
+        /// <returns>更新的实体</returns>
+        void Update(TPrimaryKey id, Action<TEntity> updateAction);
+
+        /// <summary>
+        /// 更新现有实体
+        /// </summary>
+        /// <param name="id">实体的ID</param>
+        /// <param name="updateAction">可用于更改实体值的操作</param>
+        /// <returns>更新了实体</returns>
+        Task UpdateAsync(TPrimaryKey id, Func<TEntity, Task> updateAction);
+
+        /// <summary>
+        /// 更新现有实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns>更新的实体</returns>
+        Task UpdateAsync(TEntity entity);
 
         /// <summary>
         /// 分页获取数据
@@ -422,5 +312,14 @@ namespace TsBlog.Repositories.Repository
 
 
         void Save();
+    }
+
+    /// <summary>
+    /// 默认Guid主键类型仓储
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    public interface IRepositiory<TEntity> : IRepositiory<TEntity, Guid> where TEntity : Entity
+    {
+
     }
 }

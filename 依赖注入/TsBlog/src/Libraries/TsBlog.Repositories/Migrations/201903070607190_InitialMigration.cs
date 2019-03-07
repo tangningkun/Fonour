@@ -3,7 +3,7 @@ namespace TsBlog.Repositories.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init : DbMigration
+    public partial class InitialMigration : DbMigration
     {
         public override void Up()
         {
@@ -11,7 +11,8 @@ namespace TsBlog.Repositories.Migrations
                 "dbo.Posts",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
+                        PostId = c.Guid(nullable: false),
                         Title = c.String(unicode: false),
                         Content = c.String(unicode: false),
                         AuthorId = c.String(unicode: false),
@@ -28,7 +29,8 @@ namespace TsBlog.Repositories.Migrations
                 "dbo.Users",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
+                        Id = c.Guid(nullable: false),
+                        UserId = c.Guid(nullable: false),
                         LoginName = c.String(unicode: false),
                         Password = c.String(unicode: false),
                         RealName = c.String(unicode: false),

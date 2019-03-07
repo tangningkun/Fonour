@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace TsBlog.Domain
         /// <summary>
         /// 主键
         /// </summary>
+        [SugarColumn(IsIdentity = true, IsPrimaryKey = true)]
         public virtual TPrimaryKey Id { get; set; }
     }
 

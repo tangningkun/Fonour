@@ -25,7 +25,7 @@ namespace TsBlog.Frontend.Controllers
         /// </summary>
         /// <param name="id">文章ID</param>
         /// <returns></returns>
-        public ActionResult Details(int id)
+        public ActionResult Details(Guid id)
         {
             var post = _postAppService.FindById(id);
             var model = post.ToModel();
