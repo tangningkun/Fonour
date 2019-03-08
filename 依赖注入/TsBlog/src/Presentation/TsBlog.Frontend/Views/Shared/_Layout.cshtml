@@ -14,7 +14,6 @@
     <title>@ViewBag.Title - TSBLOG</title>
     <script type="text/javascript">
         //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
-
         var _version = @version;
         var _jsPath = '@(ViewBag.JsPath ?? string.Empty)';
     </script>
@@ -31,11 +30,8 @@
     </footer>
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Assets/lib/require.js"></script>
-    <script src="~/Assets/lib/config.js"></script>
-    <!-- <script>
-        ['/assets/lib/config.js?v=' + _version]
-    </script> -->
+    <script src="~/Assets/lib/require.js" type="text/javascript"></script>
+    <script src="~/Assets/lib/config.js" type="text/javascript"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

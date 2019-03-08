@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TsBlog.ViewModel", "src\Lib
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TsBlog.Core", "src\Libraries\TsBlog.Core\TsBlog.Core.csproj", "{5F1D4F12-DE2E-4454-AEAD-513B9C6D7557}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TsBlog.WebApi", "src\Presentation\TsBlog.WebApi\TsBlog.WebApi.csproj", "{B997BC55-8CAB-4FF5-A718-288D483BE592}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{5F1D4F12-DE2E-4454-AEAD-513B9C6D7557}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1D4F12-DE2E-4454-AEAD-513B9C6D7557}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1D4F12-DE2E-4454-AEAD-513B9C6D7557}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B997BC55-8CAB-4FF5-A718-288D483BE592}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B997BC55-8CAB-4FF5-A718-288D483BE592}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B997BC55-8CAB-4FF5-A718-288D483BE592}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B997BC55-8CAB-4FF5-A718-288D483BE592}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{0A05C5FB-5F15-4C59-95BC-C37B17C9FCEA} = {F72B8E50-CD3F-4A55-9CFD-C539727E5675}
 		{509C571A-1464-4F60-A60F-D4141CE3D0BE} = {F72B8E50-CD3F-4A55-9CFD-C539727E5675}
 		{5F1D4F12-DE2E-4454-AEAD-513B9C6D7557} = {F72B8E50-CD3F-4A55-9CFD-C539727E5675}
+		{B997BC55-8CAB-4FF5-A718-288D483BE592} = {FB004D48-5FCB-42C4-8ABA-41FF143A952B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D49A753C-0A4D-4C23-A685-68945B4D20DF}
