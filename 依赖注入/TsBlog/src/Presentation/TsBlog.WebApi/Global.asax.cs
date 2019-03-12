@@ -25,13 +25,18 @@ namespace TsBlog.WebApi
         /// </summary>
         protected void Application_Start()
         {
+            //注册ASP.NET MVC应用程序中的所有区域
             AreaRegistration.RegisterAllAreas();
-            //WebApiConfig.Register(GlobalConfiguration.Configuration);
+            //配置WebApi
             GlobalConfiguration.Configure(WebApiConfig.Register);
+            //注册过滤器
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            //注册路由配置
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            //
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            AutofacWebApiConfig.Run();//依赖注入&&AutoMapper的配置初始化
+            //依赖注入&&AutoMapper的配置初始化
+            AutofacWebApiConfig.Run();
         }
         
     }
