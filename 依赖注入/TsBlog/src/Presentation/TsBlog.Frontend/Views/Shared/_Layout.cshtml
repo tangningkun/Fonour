@@ -8,12 +8,15 @@
 <head>
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="~/T.ico">
+    <add name="Access-Control-Allow-Headers" value="Origin,X-Requested-With,Content-Type,accept,key" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Assets/css/site.css" rel="stylesheet" />
+    
     <title>@ViewBag.Title - TSBLOG</title>
     <script type="text/javascript">
         //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        window.webapi = '@(System.Configuration.ConfigurationManager.AppSettings["webapi"])';
         var _version = @version;
         var _jsPath = '@(ViewBag.JsPath ?? string.Empty)';
     </script>
