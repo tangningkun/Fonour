@@ -172,13 +172,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\app\home\index.js" />
-    <Content Include="Assets\css\site.css" />
+    <Content Include="Assets\css\form-elements.css" />
     <Content Include="Assets\app\main.js" />
-    <Content Include="Assets\image\bg.png" />
-    <Content Include="Assets\image\qq.png" />
-    <Content Include="Assets\image\sina.png" />
-    <Content Include="Assets\image\wechat.png" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\images\bg.png" />
+    <Content Include="Assets\images\ico\apple-touch-icon-114-precomposed.png" />
+    <Content Include="Assets\images\ico\apple-touch-icon-144-precomposed.png" />
+    <Content Include="Assets\images\ico\apple-touch-icon-57-precomposed.png" />
+    <Content Include="Assets\images\ico\apple-touch-icon-72-precomposed.png" />
+    <Content Include="Assets\images\ico\favicon.png" />
+    <Content Include="Assets\images\qq.png" />
+    <Content Include="Assets\images\sina.png" />
+    <Content Include="Assets\images\wechat.png" />
+    <Content Include="Assets\img\backgrounds\1%402x.jpg" />
+    <Content Include="Assets\img\backgrounds\1.jpg" />
     <Content Include="Assets\lib\config.js" />
+    <Content Include="Assets\lib\js\jquery.backstretch.js" />
+    <Content Include="Assets\lib\js\jquery.backstretch.min.js" />
+    <Content Include="Assets\lib\js\placeholder.js" />
+    <Content Include="Assets\lib\js\scripts.js" />
     <Content Include="Assets\lib\require.js" />
     <Content Include="Assets\node_modules\.bin\r.js" />
     <Content Include="Assets\node_modules\jquery\AUTHORS.txt" />
@@ -305,7 +317,6 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Assets\css\login.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -365,6 +376,8 @@
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="T.ico" />
+    <Content Include="Views\Account\img\1%402x.jpg" />
+    <Content Include="Views\Account\img\1.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

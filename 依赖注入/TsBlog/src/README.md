@@ -5,3 +5,5 @@
 3. npm i polyfill;
 4. npm i requirejs;
 5. npm i jquery
+6. npm i bootstrap
+7. npm i font-awesome
