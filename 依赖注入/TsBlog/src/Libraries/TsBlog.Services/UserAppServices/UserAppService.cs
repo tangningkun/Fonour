@@ -4,26 +4,116 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TsBlog.Domain.Entities;
-using TsBlog.Repositories.UserRepositorys;
 using TsBlog.Services.AppServices;
+using TsBlog.Repositories.UserRepositorys;
+using TsBlog.Repositories.Repository;
+using TsBlog.Services.PostAppServices;
+using TsBlog.Services.AppServices.dto;
+using TsBlog.Services.UserAppServices.Dto;
+using AutoMapper;
+using TsBlog.Core.Encryption;
+using TsBlog.AutoMapperConfig.AutoMapper;
 
 namespace TsBlog.Services.UserAppServices
 {
-    public class UserAppService : GenericService<User>, IUserAppService
+    public class UserAppService:TsBlogAppService<User>, IUserAppService
     {
-        private readonly IUserRepository _repository;
-        public UserAppService(IUserRepository repository) : base(repository)
+        private readonly IUserRepositiory _userRepositiory;
+        public readonly TsBlogPostAppService _tsBlogPostAppService;
+        public UserAppService(IUserRepositiory userRepositiory, TsBlogPostAppService tsBlogPostAppService) : base(userRepositiory)
         {
-            _repository = repository;
-        }
-        public User FindByLoginName(string loginName)
-        {
-            return _repository.FindByClause(x => x.LoginName == loginName);
+            _tsBlogPostAppService = tsBlogPostAppService;
+            _userRepositiory = userRepositiory;
         }
 
-        public async Task<User> FindByLoginNames(string loginName)
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="dto">登录信息</param>
+        /// <returns></returns>
+        public async Task<MessageDto> CheckLoginUserInfo(LoginUserDto dto)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var checkCount = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName);
+                if (checkCount == 0)
+                    return new MessageDto
+                    {
+                        code = 200,
+                        message = "该账户名不存在!",
+                        result = "登录失败!"
+                    };
+                var count = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName && d.Password == Encryptor.Md5Hash(dto.Password.Trim()));
+                if (count != 0)
+                    return new MessageDto
+                    {
+                        code = 200,
+                        message = "账户名或密码有误!",
+                        result = "登录失败!"
+                    };
+                return new MessageDto
+                {
+                    code = 200,
+                    message = "登录成功!",
+                    result = "登录成功!"
+                };
+            }
+            catch (Exception e)
+            {
+                return new MessageDto
+                {
+                    code = 500,
+                    message = e.Message.ToString(),
+                    result = "登录失败!"
+                };
+            }
+            
+        }
+
+        /// <summary>
+        /// 注册用户
+        /// </summary>
+        /// <param name="dto">注册用户信息</param>
+        /// <returns></returns>
+        public async Task<MessageDto> RegisterUserInfo(RegisterUserDto dto)
+        {
+            dto.Password = Encryptor.Md5Hash(dto.Password.Trim());
+            var entity = new User
+            {
+                LoginName = dto.UserName,
+                Password = dto.Password
+            };
+            entity.Id = Guid.NewGuid();
+            entity.UserId = Guid.NewGuid();
+            entity.CreatedOn = DateTime.Now;
+            try
+            {
+                var count = await _userRepositiory.CountAsync(d => d.LoginName == entity.LoginName);
+                if (count != 0) return new MessageDto
+                {
+                    code = 200,
+                    message = "该用户名已存在，请从新输入!",
+                    result = "注册用户失败!"
+                };
+                await _userRepositiory.InsertAsync(entity);
+                var result = new MessageDto
+                {
+                    code = 200,
+                    message = "注册用户成功!",
+                    result = "注册用户成功!"
+                };
+                return result;
+            }
+            catch (Exception e)
+            {
+                var result = new MessageDto
+                {
+                    code = 500,
+                    message = e.Message.ToString(),
+                    result = "注册用户失败!"
+                };
+                return result;
+            }
         }
     }
 }

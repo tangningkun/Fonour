@@ -7,3 +7,4 @@
 5. npm i jquery
 6. npm i bootstrap
 7. npm i font-awesome
+8. npm i bootstrapvalidator

@@ -162,7 +162,9 @@
     <Compile Include="TsBlogDbConfig.cs" />
     <Compile Include="TsBlogDbContext.cs" />
     <Compile Include="TsBlogDbFactory.cs" />
+    <Compile Include="UserRepositorys\IUserRepositiory.cs" />
     <Compile Include="UserRepositorys\IUserRepository.cs" />
+    <Compile Include="UserRepositorys\UserRepositiory.cs" />
     <Compile Include="UserRepositorys\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>

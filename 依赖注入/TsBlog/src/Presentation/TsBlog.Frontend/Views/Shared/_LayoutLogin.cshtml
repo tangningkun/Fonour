@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using System.Configuration
+@{
+    //SetAntiForgeryCookie();
+    var version = ConfigurationManager.AppSettings["version"];
+}
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -6,8 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 标题 -->
-    <title>Bootstrap Login Form Template</title>
-    @*<title>@ViewBag.Title</title>*@
+    <title>@ViewBag.Title</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -28,59 +32,22 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="~/Assets/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="~/Assets/images/ico/pple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="~/Assets/images/ico/apple-touch-icon-57-precomposed.png">
-
-
+    <script type="text/javascript">
+        //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
+        window.webapi = '@(System.Configuration.ConfigurationManager.AppSettings["webapi"])';
+        var islogin = true;
+        var _version = @version;
+        var _jsPath = '@(ViewBag.JsPath ?? string.Empty)';
+    </script>
 </head>
 <body>
-    @RenderBody()
-    @*<div class="account-container">
-
-        </div>*@
-    <!-- Top content -->
     <div class="top-content">
-
         <div class="inner-bg">
             <div class="container">
+                @RenderBody()
                 <div class="row">
-                    <div class="col-sm-8 col-sm-offset-2 text">
-                        <h1><strong>Bootstrap</strong> Login Form</h1>
-                        <div class="description">
-                            <p>
-                                This is a free responsive login form made with Bootstrap.
-                                Download it on <a href="#"><strong>AZMIND</strong></a>, customize and use it as you like!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3 form-box">
-                        <div class="form-top">
-                            <div class="form-top-left">
-                                <h3>Login to our site</h3>
-                                <p>Enter your username and password to log on:</p>
-                            </div>
-                            <div class="form-top-right">
-                                <i class="fa fa-key"></i>
-                            </div>
-                        </div>
-                        <div class="form-bottom">
-                            <form role="form" action="" method="post" class="login-form">
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-username">Username</label>
-                                    <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="form-password">Password</label>
-                                    <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
-                                </div>
-                                <button type="submit" class="btn">Sign in!</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3 social-login">
-                        <h3>...or login with:</h3>
+                    <div class="col-sm-6 col-sm-offset-3 social-login" style="margin:0 auto;text-align:center;">
+                        <hr />
                         <div class="social-login-buttons">
                             <a class="btn btn-link-1 btn-link-1-facebook" href="#">
                                 <i class="fa fa-facebook"></i> Facebook
@@ -106,7 +73,11 @@
     <script src="~/Assets/node_modules/jquery/dist/jquery.js"></script>
     <script src="~/Assets/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="~/Assets/lib/js/jquery.backstretch.min.js"></script>
+    <script src="~/Assets/node_modules/bootstrapvalidator/dist/js/bootstrapValidator.js"></script>
+    <script src="~/Assets/node_modules/bootstrapvalidator/dist/js/bootstrapValidator.min.js"></script>
     <script src="~/Assets/lib/js/scripts.js"></script>
+    <script src="~/Assets/lib/require.js" type="text/javascript"></script>
+    <script src="~/Assets/lib/config.js" type="text/javascript"></script>
     @RenderSection("scripts", false)
 </body>
 </html>

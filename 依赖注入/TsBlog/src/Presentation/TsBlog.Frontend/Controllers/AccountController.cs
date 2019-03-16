@@ -15,9 +15,9 @@ namespace TsBlog.Frontend.Controllers
         /// <summary>
         /// 用户服务接口
         /// </summary>
-        private readonly IUserAppService _userAppService;
+        private readonly IUserService _userAppService;
 
-        public AccountController(IUserAppService userAppService)
+        public AccountController(IUserService userAppService)
         {
             _userAppService = userAppService;
         }
@@ -35,7 +35,7 @@ namespace TsBlog.Frontend.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost, ValidateAntiForgeryToken, AllowAnonymous]
+        [HttpPost]
         public ActionResult Login(LoginViewModel model)
         {
             //如果视图模型中的属性没有验证通过，则返回到登录页面，要求用户重新填写
@@ -64,7 +64,7 @@ namespace TsBlog.Frontend.Controllers
             //并用户实体保存到Session中
             Session["user_account"] = user;
             //跳转到首页
-            return RedirectToAction("post", "home");
+            return RedirectToAction("Post", "Home");
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace TsBlog.Frontend.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [HttpPost, ValidateAntiForgeryToken, AllowAnonymous]
+        [HttpPost]
         public ActionResult Register(RegisterViewModel model)
         {
             //如果视图模型中的属性没有验证通过，则返回到注册页面，要求用户重新填写

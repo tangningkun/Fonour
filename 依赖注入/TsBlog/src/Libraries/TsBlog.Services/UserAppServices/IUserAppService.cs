@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 using TsBlog.Domain.Entities;
 using TsBlog.Repositories.Dependency;
 using TsBlog.Services.AppServices;
+using TsBlog.Services.AppServices.dto;
+using TsBlog.Services.UserAppServices.Dto;
 
 namespace TsBlog.Services.UserAppServices
 {
-    public interface IUserAppService : IDependency, IAppService<User>
+    public interface IUserAppService: IDependency, ITsBlogAppService<User>
     {
-        User FindByLoginName(string loginName);
-        Task<User> FindByLoginNames(string loginName);
+        Task<MessageDto> CheckLoginUserInfo(LoginUserDto dto);
+
+        Task<MessageDto> RegisterUserInfo(RegisterUserDto dto);
     }
 }

@@ -29,6 +29,7 @@ namespace TsBlog.WebApi.Controllers
         /// GetAllPosts
         /// </summary>
         /// <returns></returns>
+        [HttpGet]
         public async Task<List<Post>> GetAllPosts()
         {
             var query = await _tsBlogPostAppService.GetAll();

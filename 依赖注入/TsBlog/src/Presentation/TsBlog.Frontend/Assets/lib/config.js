@@ -16,6 +16,7 @@ requirejs.config({
   baseUrl: '/assets',
   paths: {
     main: 'app/main',
+    login: 'app/login',
     // core libary
     jquery: 'node_modules/jquery/dist/jquery.min',
 
@@ -32,5 +33,7 @@ requirejs.config({
   urlArgs: 'v=' + timeStamp
 });
 requirejs(['polyfill'], function() {
+  //if (islogin)
+  //    requirejs([_jsPath || 'app/login']);
   requirejs([_jsPath || 'app/main']);
 });

@@ -36,6 +36,7 @@
     </Reference>
     <Reference Include="SqlSugar, Version=4.9.9.1, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -49,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppServices\dto\MessageDto.cs" />
     <Compile Include="AppServices\dto\PagedResultDto.cs" />
     <Compile Include="AppServices\GenericAppService.cs" />
     <Compile Include="AppServices\IAppService.cs" />
@@ -59,10 +61,23 @@
     <Compile Include="PostAppServices\PostAppService.cs" />
     <Compile Include="PostAppServices\TsBlogPostAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserAppServices\Dto\LoginUserDto.cs" />
+    <Compile Include="UserAppServices\Dto\RegisterUserDto.cs" />
+    <Compile Include="UserAppServices\Dto\UserDto.cs" />
     <Compile Include="UserAppServices\IUserAppService.cs" />
+    <Compile Include="UserAppServices\IUserService.cs" />
     <Compile Include="UserAppServices\UserAppService.cs" />
+    <Compile Include="UserAppServices\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TsBlog.AutoMapperConfig\TsBlog.AutoMapperConfig.csproj">
+      <Project>{0a05c5fb-5f15-4c59-95bc-c37b17c9fcea}</Project>
+      <Name>TsBlog.AutoMapperConfig</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TsBlog.Core\TsBlog.Core.csproj">
+      <Project>{5f1d4f12-de2e-4454-aead-513b9c6d7557}</Project>
+      <Name>TsBlog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TsBlog.Domain\TsBlog.Domain.csproj">
       <Project>{c409c434-d107-4aa7-8863-8f171548e641}</Project>
       <Name>TsBlog.Domain</Name>
@@ -79,5 +94,6 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
