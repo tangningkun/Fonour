@@ -16,10 +16,9 @@ requirejs.config({
   baseUrl: '/assets',
   paths: {
     main: 'app/main',
-    login: 'app/login',
     // core libary
     jquery: 'node_modules/jquery/dist/jquery.min',
-
+    bootstrapvalidator: 'node_modules/bootstrapvalidator/dist/js/bootstrapValidator.min',
     // requireJs plugins
     depend: 'lib/requirejs-plugins/depend',
     text: 'lib/requirejs-plugins/text',
