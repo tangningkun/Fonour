@@ -6,25 +6,7 @@ define(['main', 'current', 'lay!layer'], function(main, current) {
       if (module._checkform(username, password)) {
         return;
       }
-      $.ajax({
-        url: '/Account/CheckLogin',
-        contentType: 'application/x-www-form-urlencoded',
-        data: {
-          UserName: username,
-          Password: password
-        },
-        type: 'POST',
-        async: false,
-        success: function(result) {
-          if (result.code == 200) {
-            location.href = '/Home/Index';
-          } else if (result.code != 202) {
-            layer.msg(result.message, { icon: 2 });
-          } else {
-            layer.msg('系统错误,请重新登录！', { icon: 2 });
-          }
-        }
-      });
+      module._checklogin(username, password);
     },
     _checkform: function(username, password) {
       if (current._IsEmpty(username)) {
@@ -37,12 +19,26 @@ define(['main', 'current', 'lay!layer'], function(main, current) {
       }
       return false;
     },
-    isEmpty: function(obj) {
-      if (typeof obj == 'undefined' || obj == null || obj == '') {
-        return true;
-      } else {
-        return false;
-      }
+    _checklogin: function(username, password) {
+      $.ajax({
+        url: '/Account/CheckLogin',
+        contentType: 'application/x-www-form-urlencoded',
+        data: {
+          UserName: username,
+          Password: password
+        },
+        type: 'POST',
+        async: false,
+        success: function(result) {
+          if (result.code == 200) {
+            location.href = '/Home/Index'; //跳转到首页
+          } else if (result.code != 202) {
+            layer.msg(result.message, { icon: 2 });
+          } else {
+            layer.msg('系统错误,请重新登录！', { icon: 2 });
+          }
+        }
+      });
     }
   };
   $('#btn-login').click(function() {

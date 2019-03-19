@@ -52,7 +52,7 @@ namespace TsBlog.Services.UserAppServices
                     {
                         code = 200,
                         message = "登录成功!",
-                        result = "Sucess!",
+                        result = "Success",
                         data = query
                     };
                 }
@@ -60,7 +60,7 @@ namespace TsBlog.Services.UserAppServices
                 {
                     code = 201,
                     message = "账户名或密码有误!",
-                    result = "Fail!"
+                    result = "Fail"
                 };
             }
             catch (Exception e)
@@ -115,7 +115,7 @@ namespace TsBlog.Services.UserAppServices
                 {
                     code = 202,
                     message = e.Message.ToString(),
-                    result = "Fail!"
+                    result = "Fail"
                 };
                 return result;
             }

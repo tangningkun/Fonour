@@ -64,7 +64,7 @@ namespace TsBlog.Frontend.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<JsonResult> RegisteredUsser(RegisterViewModel model)
+        public async Task<JsonResult> RegisteredUser(RegisterViewModel model)
         {
             //return RedirectToAction("login");
             var result = await _userAppService.RegisterUserInfo(model.MapTo<RegisterViewModel, RegisterUserDto>());

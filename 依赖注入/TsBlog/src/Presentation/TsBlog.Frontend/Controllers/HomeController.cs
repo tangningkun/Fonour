@@ -23,6 +23,7 @@ namespace TsBlog.Frontend.Controllers
         }
         public ActionResult Index(int? page)
         {
+            var data = Session["user_account"];
             //var list = _postAppService.FindHomePagePosts();
             //var model = list.Select(x => x.ToModel().FormatPostViewModel());
             var query = _tsBlogPostAppService.GetAll();
