@@ -13,7 +13,7 @@ namespace TsBlog.Services.UserAppServices
 {
     public interface IUserAppService: IDependency, ITsBlogAppService<User>
     {
-        Task<MessageDto> CheckLoginUserInfo(LoginUserDto dto);
+        Task<MessageDto<User>> CheckLoginUserInfo(LoginUserDto dto);
 
         Task<MessageDto> RegisterUserInfo(RegisterUserDto dto);
     }

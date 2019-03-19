@@ -31,40 +31,45 @@ namespace TsBlog.Services.UserAppServices
         /// </summary>
         /// <param name="dto">登录信息</param>
         /// <returns></returns>
-        public async Task<MessageDto> CheckLoginUserInfo(LoginUserDto dto)
+        public async Task<MessageDto<User>> CheckLoginUserInfo(LoginUserDto dto)
         {
             try
             {
                 var checkCount = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName);
                 if (checkCount == 0)
-                    return new MessageDto
+                    return new MessageDto<User>
                     {
-                        code = 200,
+                        code = 201,
                         message = "该账户名不存在!",
-                        result = "登录失败!"
+                        result = "Fail"
                     };
-                var count = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName && d.Password == Encryptor.Md5Hash(dto.Password.Trim()));
+                var password = Encryptor.Md5Hash(dto.Password.Trim()).ToString();
+                var count = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName && d.Password == password);
                 if (count != 0)
-                    return new MessageDto
+                {
+                    var query = await _userRepositiory.FirstOrDefaultAsync(d => d.LoginName == dto.UserName && d.Password == password);
+                    return new MessageDto<User>
                     {
                         code = 200,
-                        message = "账户名或密码有误!",
-                        result = "登录失败!"
+                        message = "登录成功!",
+                        result = "Sucess!",
+                        data = query
                     };
-                return new MessageDto
+                }
+                return new MessageDto<User>
                 {
-                    code = 200,
-                    message = "登录成功!",
-                    result = "登录成功!"
+                    code = 201,
+                    message = "账户名或密码有误!",
+                    result = "Fail!"
                 };
             }
             catch (Exception e)
             {
-                return new MessageDto
+                return new MessageDto<User>
                 {
-                    code = 500,
+                    code = 202,
                     message = e.Message.ToString(),
-                    result = "登录失败!"
+                    result = "Fail"
                 };
             }
             
@@ -91,16 +96,16 @@ namespace TsBlog.Services.UserAppServices
                 var count = await _userRepositiory.CountAsync(d => d.LoginName == entity.LoginName);
                 if (count != 0) return new MessageDto
                 {
-                    code = 200,
+                    code = 201,
                     message = "该用户名已存在，请从新输入!",
-                    result = "注册用户失败!"
+                    result = "Fail"
                 };
                 await _userRepositiory.InsertAsync(entity);
                 var result = new MessageDto
                 {
                     code = 200,
                     message = "注册用户成功!",
-                    result = "注册用户成功!"
+                    result = "Success"
                 };
                 return result;
             }
@@ -108,9 +113,9 @@ namespace TsBlog.Services.UserAppServices
             {
                 var result = new MessageDto
                 {
-                    code = 500,
+                    code = 202,
                     message = e.Message.ToString(),
-                    result = "注册用户失败!"
+                    result = "Fail!"
                 };
                 return result;
             }

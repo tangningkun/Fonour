@@ -16,6 +16,7 @@ requirejs.config({
   baseUrl: '/assets',
   paths: {
     main: 'app/main',
+    current: 'app/current',
     // core libary
     jquery: 'node_modules/jquery/dist/jquery.min',
     bootstrapvalidator: 'node_modules/bootstrapvalidator/dist/js/bootstrapValidator.min',
@@ -23,7 +24,6 @@ requirejs.config({
     depend: 'lib/requirejs-plugins/depend',
     text: 'lib/requirejs-plugins/text',
     lay: 'lib/requirejs-plugins/lay',
-
     // javascript shim
     es6: 'node_modules/requirejs-babel/es6',
     babel: 'node_modules/requirejs-babel/babel-5.8.34.min',
