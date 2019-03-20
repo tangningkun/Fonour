@@ -25,6 +25,9 @@ namespace TsBlog.Domain
     /// </summary>
     public abstract class Entity : Entity<Guid>
     {
-
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public DateTime CreatedOn { get; set; }
     }
 }

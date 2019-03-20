@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Menu.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entity.cs" />
