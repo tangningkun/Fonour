@@ -8,3 +8,4 @@
 6. npm i bootstrap
 7. npm i font-awesome
 8. npm i bootstrapvalidator
+9. npm install md5

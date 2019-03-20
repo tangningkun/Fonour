@@ -43,5 +43,9 @@ namespace TsBlog.Frontend.Controllers
             var post = _postAppService.FindById(1).ToModel(); ;
             return View(post);
         }
+        public ActionResult Home()
+        {
+            return View();
+        }
     }
 }
