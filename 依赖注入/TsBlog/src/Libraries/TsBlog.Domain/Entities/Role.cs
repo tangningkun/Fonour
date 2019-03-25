@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SqlSugar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace TsBlog.Domain.Entities
 {
+    [SugarTable("Roles")]
     public class Role:Entity
     {
         /// <summary>
@@ -33,5 +35,9 @@ namespace TsBlog.Domain.Entities
         /// 角色备注
         /// </summary>
         public string Remarks { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
+
+        public virtual ICollection<Menu> Menus { get; set; }
     }
 }

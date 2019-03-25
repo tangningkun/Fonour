@@ -142,17 +142,9 @@
     <Compile Include="Dependency\IDependency.cs" />
     <Compile Include="MenuRepositorys\IMenuRepositiory.cs" />
     <Compile Include="MenuRepositorys\MenuRepositiory.cs" />
-    <Compile Include="Migrations\201903070607190_InitialMigration.cs" />
-    <Compile Include="Migrations\201903070607190_InitialMigration.Designer.cs">
-      <DependentUpon>201903070607190_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903201259252_TABLE-Menu.cs" />
-    <Compile Include="Migrations\201903201259252_TABLE-Menu.Designer.cs">
-      <DependentUpon>201903201259252_TABLE-Menu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903201308458_TABLE-UPDATE.cs" />
-    <Compile Include="Migrations\201903201308458_TABLE-UPDATE.Designer.cs">
-      <DependentUpon>201903201308458_TABLE-UPDATE.cs</DependentUpon>
+    <Compile Include="Migrations\201903250849586_FirstDb.cs" />
+    <Compile Include="Migrations\201903250849586_FirstDb.Designer.cs">
+      <DependentUpon>201903250849586_FirstDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultSettingsCreator.cs" />
@@ -180,6 +172,7 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TsBlog.Domain\TsBlog.Domain.csproj">
@@ -192,14 +185,8 @@
     <Content Include="lib\MySqlSugar.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903070607190_InitialMigration.resx">
-      <DependentUpon>201903070607190_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903201259252_TABLE-Menu.resx">
-      <DependentUpon>201903201259252_TABLE-Menu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903201308458_TABLE-UPDATE.resx">
-      <DependentUpon>201903201308458_TABLE-UPDATE.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903250849586_FirstDb.resx">
+      <DependentUpon>201903250849586_FirstDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

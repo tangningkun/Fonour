@@ -30,9 +30,9 @@ namespace TsBlog.Repositories.Migrations.SeedData
                 AuthorName = "lonely",
                 CreatedAt = DateTime.Parse("2019-03-07"),
                 PublishedAt = DateTime.Parse("2019-03-07"),
-                IsDeleted =false,
-                AllowShow =true,
-                ViewCount =100
+                IsDeleted = false,
+                AllowShow = true,
+                ViewCount = 100
             };
             var entity = _context.Posts.FirstOrDefault();
             if (entity == null)

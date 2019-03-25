@@ -10,13 +10,10 @@ namespace TsBlog.Domain.Entities
     /// <summary>
     /// 功能菜单实体
     /// </summary>
-    [SugarTable("menus")]
+    [SugarTable("Menus")]
     public class Menu : Entity
     {
-        /// <summary>
-        /// 角色Id
-        /// </summary>
-        public Guid RoleId { get; set; }
+        
         /// <summary>
         /// 父级ID
         /// </summary>

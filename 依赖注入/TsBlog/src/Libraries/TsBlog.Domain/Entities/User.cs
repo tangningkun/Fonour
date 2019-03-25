@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TsBlog.Domain.Entities
 {
-    [SugarTable("users")]
+    [SugarTable("Users")]
     public class User:Entity
     {
         /// <summary>
@@ -75,5 +75,32 @@ namespace TsBlog.Domain.Entities
         /// 类型
         /// </summary>
         public int Type { get; set; }
+
+        /// <summary>
+        /// 部门ID
+        /// </summary>
+        public Guid DeptmentId { get; set; }
+
+        /// <summary>
+        /// 是否已删除
+        /// </summary>
+        public int IsDeleted { get; set; }
+
+        /// <summary>
+        /// 所属部门实体
+        /// </summary>
+        public virtual Department Department { get; set; }
+
+        /// <summary>
+        /// 创建人实体
+        /// </summary>
+
+        public virtual User CreateUser { get; set; }
+
+        /// <summary>
+        /// 角色集合
+        /// </summary>
+
+        public virtual ICollection<Role> Roles { get; set; }
     }
 }

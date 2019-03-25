@@ -10,7 +10,7 @@ namespace TsBlog.Domain.Entities
     /// <summary>
     /// 博文实体类
     /// </summary>
-    [SugarTable("posts")]
+    [SugarTable("Posts")]
     public class Post:Entity
     {
         /// <summary>
