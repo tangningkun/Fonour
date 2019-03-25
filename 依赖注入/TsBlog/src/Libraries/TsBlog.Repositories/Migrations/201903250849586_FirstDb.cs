@@ -116,38 +116,20 @@ namespace TsBlog.Repositories.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.RoleUsers",
-                c => new
-                    {
-                        Role_Id = c.Guid(nullable: false),
-                        User_Id = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Role_Id, t.User_Id })
-                .ForeignKey("dbo.Roles", t => t.Role_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true)
-                .Index(t => t.Role_Id)
-                .Index(t => t.User_Id);
-            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.Users", "Department_Id1", "dbo.Departments");
             DropForeignKey("dbo.Departments", "CreateUserId", "dbo.Users");
-            DropForeignKey("dbo.RoleUsers", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.RoleUsers", "Role_Id", "dbo.Roles");
             DropForeignKey("dbo.Menus", "Role_Id", "dbo.Roles");
             DropForeignKey("dbo.Users", "Department_Id", "dbo.Departments");
             DropForeignKey("dbo.Users", "UserId", "dbo.Users");
-            DropIndex("dbo.RoleUsers", new[] { "User_Id" });
-            DropIndex("dbo.RoleUsers", new[] { "Role_Id" });
             DropIndex("dbo.Menus", new[] { "Role_Id" });
             DropIndex("dbo.Users", new[] { "Department_Id1" });
             DropIndex("dbo.Users", new[] { "Department_Id" });
             DropIndex("dbo.Users", new[] { "UserId" });
             DropIndex("dbo.Departments", new[] { "CreateUserId" });
-            DropTable("dbo.RoleUsers");
             DropTable("dbo.Posts");
             DropTable("dbo.Menus");
             DropTable("dbo.Roles");

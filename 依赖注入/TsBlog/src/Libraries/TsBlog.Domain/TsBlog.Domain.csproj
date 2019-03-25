@@ -54,7 +54,9 @@
     <Compile Include="Entities\Menu.cs" />
     <Compile Include="Entities\Post.cs" />
     <Compile Include="Entities\Role.cs" />
+    <Compile Include="Entities\RoleMenu.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
