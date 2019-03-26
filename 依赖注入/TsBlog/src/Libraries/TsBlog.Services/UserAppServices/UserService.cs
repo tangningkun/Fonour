@@ -18,7 +18,7 @@ namespace TsBlog.Services.UserAppServices
         }
         public User FindByLoginName(string loginName)
         {
-            return _repository.FindByClause(x => x.LoginName == loginName);
+            return _repository.FindByClause(x => x.UserName == loginName);
         }
 
         public async Task<User> FindByLoginNames(string loginName)

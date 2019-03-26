@@ -1,5 +1,6 @@
 namespace TsBlog.Repositories.Migrations
 {
+    using MySql.Data.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -10,7 +11,8 @@ namespace TsBlog.Repositories.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            SetSqlGenerator("MySql.Data.MySqlClient", new MySqlMigrationSqlGenerator());//设置Sql生成器为Mysql的
         }
 
         protected override void Seed(TsBlog.Repositories.TsBlogDbContext context)

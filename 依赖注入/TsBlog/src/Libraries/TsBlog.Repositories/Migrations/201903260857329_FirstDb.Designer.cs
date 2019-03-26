@@ -13,7 +13,7 @@ namespace TsBlog.Repositories.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201903250849586_FirstDb"; }
+            get { return "201903260857329_FirstDb"; }
         }
         
         string IMigrationMetadata.Source

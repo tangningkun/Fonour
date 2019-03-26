@@ -142,13 +142,9 @@
     <Compile Include="Dependency\IDependency.cs" />
     <Compile Include="MenuRepositorys\IMenuRepositiory.cs" />
     <Compile Include="MenuRepositorys\MenuRepositiory.cs" />
-    <Compile Include="Migrations\201903250849586_FirstDb.cs" />
-    <Compile Include="Migrations\201903250849586_FirstDb.Designer.cs">
-      <DependentUpon>201903250849586_FirstDb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903251415445_Role_User_Menu.cs" />
-    <Compile Include="Migrations\201903251415445_Role_User_Menu.Designer.cs">
-      <DependentUpon>201903251415445_Role_User_Menu.cs</DependentUpon>
+    <Compile Include="Migrations\201903260857329_FirstDb.cs" />
+    <Compile Include="Migrations\201903260857329_FirstDb.Designer.cs">
+      <DependentUpon>201903260857329_FirstDb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultSettingsCreator.cs" />
@@ -179,6 +175,10 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\TsBlog.Core\TsBlog.Core.csproj">
+      <Project>{5f1d4f12-de2e-4454-aead-513b9c6d7557}</Project>
+      <Name>TsBlog.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TsBlog.Domain\TsBlog.Domain.csproj">
       <Project>{c409c434-d107-4aa7-8863-8f171548e641}</Project>
       <Name>TsBlog.Domain</Name>
@@ -189,11 +189,8 @@
     <Content Include="lib\MySqlSugar.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903250849586_FirstDb.resx">
-      <DependentUpon>201903250849586_FirstDb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903251415445_Role_User_Menu.resx">
-      <DependentUpon>201903251415445_Role_User_Menu.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903260857329_FirstDb.resx">
+      <DependentUpon>201903260857329_FirstDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

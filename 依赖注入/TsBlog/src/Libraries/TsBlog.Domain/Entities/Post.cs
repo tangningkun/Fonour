@@ -35,13 +35,9 @@ namespace TsBlog.Domain.Entities
         /// </summary>
         public string AuthorName { get; set; }
         /// <summary>
-        /// 创建时间
-        /// </summary>
-        public DateTime CreatedAt { get; set; }
-        /// <summary>
         /// 发布时间
         /// </summary>
-        public DateTime PublishedAt { get; set; }
+        public DateTime PublishedTime { get; set; }
         /// <summary>
         /// 是否标识已删除
         /// </summary>

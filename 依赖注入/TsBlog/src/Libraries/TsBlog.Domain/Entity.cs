@@ -28,6 +28,6 @@ namespace TsBlog.Domain
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime CreatedOn { get; set; }
+        public DateTime? CreateTime { get; set; }
     }
 }

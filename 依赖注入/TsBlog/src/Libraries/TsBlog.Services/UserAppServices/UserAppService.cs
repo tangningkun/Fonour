@@ -35,7 +35,7 @@ namespace TsBlog.Services.UserAppServices
         {
             try
             {
-                var checkCount = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName);
+                var checkCount = await _userRepositiory.CountAsync(d => d.UserName == dto.UserName);
                 if (checkCount == 0)
                     return new MessageDto<User>
                     {
@@ -44,10 +44,10 @@ namespace TsBlog.Services.UserAppServices
                         result = "Fail"
                     };
                 var password = Encryptor.Md5Hash(dto.Password.Trim()).ToString();
-                var count = await _userRepositiory.CountAsync(d => d.LoginName == dto.UserName && d.Password == password);
+                var count = await _userRepositiory.CountAsync(d => d.UserName == dto.UserName && d.Password == password);
                 if (count != 0)
                 {
-                    var query = await _userRepositiory.FirstOrDefaultAsync(d => d.LoginName == dto.UserName && d.Password == password);
+                    var query = await _userRepositiory.FirstOrDefaultAsync(d => d.UserName == dto.UserName && d.Password == password);
                     return new MessageDto<User>
                     {
                         code = 200,
@@ -85,15 +85,16 @@ namespace TsBlog.Services.UserAppServices
             dto.Password = Encryptor.Md5Hash(dto.Password.Trim());
             var entity = new User
             {
-                LoginName = dto.UserName,
-                Password = dto.Password
+                UserName = dto.UserName,
+                Password = dto.Password,
+                Id = Guid.NewGuid(),
+                UserId = Guid.NewGuid(),
+                CreateTime = DateTime.Now,
+                IsDeleted = 0
             };
-            entity.Id = Guid.NewGuid();
-            entity.UserId = Guid.NewGuid();
-            entity.CreatedOn = DateTime.Now;
             try
             {
-                var count = await _userRepositiory.CountAsync(d => d.LoginName == entity.LoginName);
+                var count = await _userRepositiory.CountAsync(d => d.UserName == entity.UserName);
                 if (count != 0) return new MessageDto
                 {
                     code = 201,
