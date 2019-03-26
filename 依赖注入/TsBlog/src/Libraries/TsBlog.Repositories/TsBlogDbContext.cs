@@ -34,11 +34,6 @@ namespace TsBlog.Repositories
             modelBuilder.Entity<RoleMenu>()
               .HasKey(rm => new { rm.RoleId, rm.MenuId });
 
-            //modelBuilder.Entity<RoleMenu>()
-            //  .HasOne(rm => rm.Role)
-            //  .WithMany(r => r.RoleMenus)
-            //  .HasForeignKey(rm => rm.RoleId).HasForeignKey(rm => rm.MenuId);
-
             base.OnModelCreating(modelBuilder);
         }
     }

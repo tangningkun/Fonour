@@ -11,10 +11,6 @@ namespace TsBlog.Domain.Entities
     public class User:Entity
     {
         /// <summary>
-        /// 用户Id
-        /// </summary>
-        public Guid UserId { get; set; }
-        /// <summary>
         /// 用户名
         /// </summary>
         public string UserName { get; set; }
@@ -45,6 +41,11 @@ namespace TsBlog.Domain.Entities
         public string Remarks { get; set; }
 
         /// <summary>
+        /// 创建人
+        /// </summary>
+        public Guid CreateUserId { get; set; }
+
+        /// <summary>
         /// 上次登录时间
         /// </summary>
         public DateTime LastLoginTime { get; set; }
@@ -57,7 +58,7 @@ namespace TsBlog.Domain.Entities
         /// <summary>
         /// 部门ID
         /// </summary>
-        public Guid? DeptmentId { get; set; }
+        public Guid DepartmentId { get; set; }
 
         /// <summary>
         /// 是否已删除
@@ -73,6 +74,6 @@ namespace TsBlog.Domain.Entities
         /// 角色集合
         /// </summary>
 
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
     }
 }

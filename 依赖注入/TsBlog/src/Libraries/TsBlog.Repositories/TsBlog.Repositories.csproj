@@ -142,9 +142,9 @@
     <Compile Include="Dependency\IDependency.cs" />
     <Compile Include="MenuRepositorys\IMenuRepositiory.cs" />
     <Compile Include="MenuRepositorys\MenuRepositiory.cs" />
-    <Compile Include="Migrations\201903260857329_FirstDb.cs" />
-    <Compile Include="Migrations\201903260857329_FirstDb.Designer.cs">
-      <DependentUpon>201903260857329_FirstDb.cs</DependentUpon>
+    <Compile Include="Migrations\201903261347450_firstdb.cs" />
+    <Compile Include="Migrations\201903261347450_firstdb.Designer.cs">
+      <DependentUpon>201903261347450_firstdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\SeedData\DefaultSettingsCreator.cs" />
@@ -189,8 +189,8 @@
     <Content Include="lib\MySqlSugar.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903260857329_FirstDb.resx">
-      <DependentUpon>201903260857329_FirstDb.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903261347450_firstdb.resx">
+      <DependentUpon>201903261347450_firstdb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

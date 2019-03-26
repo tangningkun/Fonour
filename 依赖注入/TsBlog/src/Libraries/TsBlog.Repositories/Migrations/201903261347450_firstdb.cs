@@ -3,7 +3,7 @@ namespace TsBlog.Repositories.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class FirstDb : DbMigration
+    public partial class firstdb : DbMigration
     {
         public override void Up()
         {
@@ -22,52 +22,68 @@ namespace TsBlog.Repositories.Migrations
                         IsDeleted = c.Int(nullable: false),
                         CreateTime = c.DateTime(precision: 0),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.CreateUserId, cascadeDelete: true)
-                .Index(t => t.CreateUserId);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Users",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        UserId = c.Guid(nullable: false),
                         UserName = c.String(unicode: false),
                         Password = c.String(unicode: false),
                         Name = c.String(unicode: false),
                         EMail = c.String(unicode: false),
                         MobileNumber = c.String(unicode: false),
                         Remarks = c.String(unicode: false),
+                        CreateUserId = c.Guid(nullable: false),
                         LastLoginTime = c.DateTime(nullable: false, precision: 0),
                         LoginTimes = c.Int(nullable: false),
-                        DeptmentId = c.Guid(),
+                        DepartmentId = c.Guid(nullable: false),
                         IsDeleted = c.Int(nullable: false),
                         CreateTime = c.DateTime(precision: 0),
-                        Department_Id = c.Guid(),
-                        Department_Id1 = c.Guid(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Users", t => t.UserId)
-                .ForeignKey("dbo.Departments", t => t.Department_Id)
-                .ForeignKey("dbo.Departments", t => t.Department_Id1)
+                .ForeignKey("dbo.Departments", t => t.DepartmentId, cascadeDelete: true)
+                .Index(t => t.DepartmentId);
+            
+            CreateTable(
+                "dbo.UserRoles",
+                c => new
+                    {
+                        UserId = c.Guid(nullable: false),
+                        RoleId = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.UserId, t.RoleId })
+                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
-                .Index(t => t.Department_Id)
-                .Index(t => t.Department_Id1);
+                .Index(t => t.RoleId);
             
             CreateTable(
                 "dbo.Roles",
                 c => new
                     {
                         Id = c.Guid(nullable: false),
-                        RoleId = c.Guid(nullable: false),
-                        RoleName = c.String(unicode: false),
-                        RoleType = c.Int(nullable: false),
-                        RoleCode = c.String(unicode: false),
+                        Code = c.String(unicode: false),
+                        Name = c.String(unicode: false),
                         CreateUserId = c.Guid(nullable: false),
-                        Remarks = c.String(unicode: false),
                         CreateTime = c.DateTime(precision: 0),
+                        Remarks = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.RoleMenus",
+                c => new
+                    {
+                        RoleId = c.Guid(nullable: false),
+                        MenuId = c.Guid(nullable: false),
+                    })
+                .PrimaryKey(t => new { t.RoleId, t.MenuId })
+                .ForeignKey("dbo.Menus", t => t.MenuId, cascadeDelete: true)
+                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
+                .Index(t => t.RoleId)
+                .Index(t => t.MenuId);
             
             CreateTable(
                 "dbo.Menus",
@@ -83,11 +99,8 @@ namespace TsBlog.Repositories.Migrations
                         Icon = c.String(unicode: false),
                         Remarks = c.String(unicode: false),
                         CreateTime = c.DateTime(precision: 0),
-                        Role_Id = c.Guid(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Roles", t => t.Role_Id)
-                .Index(t => t.Role_Id);
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Posts",
@@ -107,45 +120,6 @@ namespace TsBlog.Repositories.Migrations
                     })
                 .PrimaryKey(t => t.Id);
             
-            CreateTable(
-                "dbo.RoleMenus",
-                c => new
-                    {
-                        RoleId = c.Guid(nullable: false),
-                        MenuId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.RoleId, t.MenuId })
-                .ForeignKey("dbo.Menus", t => t.MenuId, cascadeDelete: true)
-                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
-                .Index(t => t.RoleId)
-                .Index(t => t.MenuId);
-            
-            CreateTable(
-                "dbo.UserRoles",
-                c => new
-                    {
-                        UserId = c.Guid(nullable: false),
-                        RoleId = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.Roles", t => t.RoleId, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.UserId, cascadeDelete: true)
-                .Index(t => t.UserId)
-                .Index(t => t.RoleId);
-            
-            CreateTable(
-                "dbo.RoleUsers",
-                c => new
-                    {
-                        Role_Id = c.Guid(nullable: false),
-                        User_Id = c.Guid(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Role_Id, t.User_Id })
-                .ForeignKey("dbo.Roles", t => t.Role_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Users", t => t.User_Id, cascadeDelete: true)
-                .Index(t => t.Role_Id)
-                .Index(t => t.User_Id);
-            
         }
         
         public override void Down()
@@ -154,30 +128,17 @@ namespace TsBlog.Repositories.Migrations
             DropForeignKey("dbo.UserRoles", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.RoleMenus", "RoleId", "dbo.Roles");
             DropForeignKey("dbo.RoleMenus", "MenuId", "dbo.Menus");
-            DropForeignKey("dbo.Users", "Department_Id1", "dbo.Departments");
-            DropForeignKey("dbo.Departments", "CreateUserId", "dbo.Users");
-            DropForeignKey("dbo.RoleUsers", "User_Id", "dbo.Users");
-            DropForeignKey("dbo.RoleUsers", "Role_Id", "dbo.Roles");
-            DropForeignKey("dbo.Menus", "Role_Id", "dbo.Roles");
-            DropForeignKey("dbo.Users", "Department_Id", "dbo.Departments");
-            DropForeignKey("dbo.Users", "UserId", "dbo.Users");
-            DropIndex("dbo.RoleUsers", new[] { "User_Id" });
-            DropIndex("dbo.RoleUsers", new[] { "Role_Id" });
-            DropIndex("dbo.UserRoles", new[] { "RoleId" });
-            DropIndex("dbo.UserRoles", new[] { "UserId" });
+            DropForeignKey("dbo.Users", "DepartmentId", "dbo.Departments");
             DropIndex("dbo.RoleMenus", new[] { "MenuId" });
             DropIndex("dbo.RoleMenus", new[] { "RoleId" });
-            DropIndex("dbo.Menus", new[] { "Role_Id" });
-            DropIndex("dbo.Users", new[] { "Department_Id1" });
-            DropIndex("dbo.Users", new[] { "Department_Id" });
-            DropIndex("dbo.Users", new[] { "UserId" });
-            DropIndex("dbo.Departments", new[] { "CreateUserId" });
-            DropTable("dbo.RoleUsers");
-            DropTable("dbo.UserRoles");
-            DropTable("dbo.RoleMenus");
+            DropIndex("dbo.UserRoles", new[] { "RoleId" });
+            DropIndex("dbo.UserRoles", new[] { "UserId" });
+            DropIndex("dbo.Users", new[] { "DepartmentId" });
             DropTable("dbo.Posts");
             DropTable("dbo.Menus");
+            DropTable("dbo.RoleMenus");
             DropTable("dbo.Roles");
+            DropTable("dbo.UserRoles");
             DropTable("dbo.Users");
             DropTable("dbo.Departments");
         }

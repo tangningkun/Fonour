@@ -19,7 +19,7 @@ namespace TsBlog.Repositories.Migrations.SeedData
         {
             //初始化Post表
             AddPostList();
-            AddRoleList();
+            //AddRoleList();
             AddUserList();
         }
         private void AddPostList()
@@ -45,61 +45,114 @@ namespace TsBlog.Repositories.Migrations.SeedData
                 _context.SaveChanges();
             }
         }
-        private void AddRoleList()
-        {
-            var items = new List<Role>()
-            {
-                new Role(){
-                    Id= new Guid("56cd067d-7eb9-4d81-8b98-d864905865c0"),
-                    RoleId=new Guid("cb9ec6ea-60f7-4434-be08-794c057e652e"),
-                    RoleName="系统管理员",
-                    RoleType =1,
-                    RoleCode ="A00001",
-                    Remarks ="最高权限管理角色",
-                    CreateTime=DateTime.Now,
-                },
-                new Role(){
-                    Id=new Guid("e5718e1e-9d6c-406d-98e7-ca9f3efe6220"),
-                    RoleId=new Guid("45920738-ea58-41b5-9467-7a2be5e52ec2"),
-                    RoleName="菜单栏管理员",
-                    RoleType =2,
-                    RoleCode ="B00001",
-                    Remarks ="只负责菜单信息管理与分配",
-                    CreateTime=DateTime.Now,
-                }
-            };
-            foreach (var item in items)
-            {
-                var entity = _context.Roles.FirstOrDefault(t => t.RoleName == item.RoleName);
-                if (entity == null)
-                {
-                    _context.Roles.Add(item);
-                    _context.SaveChanges();
-                }
-            }
-        }
+        //private void AddRoleList()
+        //{
+        //    var items = new List<Role>()
+        //    {
+        //        new Role{
+        //            Id= new Guid("56cd067d-7eb9-4d81-8b98-d864905865c0"),
+        //            RoleId=new Guid("cb9ec6ea-60f7-4434-be08-794c057e652e"),
+        //            RoleName="系统管理员",
+        //            RoleType =1,
+        //            RoleCode ="A00001",
+        //            Remarks ="最高权限管理角色",
+        //            CreateTime=DateTime.Now,
+        //        },
+        //        new Role(){
+        //            Id=new Guid("e5718e1e-9d6c-406d-98e7-ca9f3efe6220"),
+        //            RoleId=new Guid("45920738-ea58-41b5-9467-7a2be5e52ec2"),
+        //            RoleName="菜单栏管理员",
+        //            RoleType =2,
+        //            RoleCode ="B00001",
+        //            Remarks ="只负责菜单信息管理与分配",
+        //            CreateTime=DateTime.Now,
+        //        }
+        //    };
+        //    foreach (var item in items)
+        //    {
+        //        var entity = _context.Roles.FirstOrDefault(t => t. == item.RoleName);
+        //        if (entity == null)
+        //        {
+        //            _context.Roles.Add(item);
+        //            _context.SaveChanges();
+        //        }
+        //    }
+        //}
         private void AddUserList()
         {
-            var items = new List<User>()
+            if (_context.Users.Any())
             {
-                new User(){
-                    Id = new Guid("d0b67d8d-4ff0-4740-9bb6-f4eda9c2e29d"),
-                    UserId=new Guid("c3ffc1fd-aa8d-4772-afbb-d917c87228c8"),
-                    UserName="admin",
-                    Password=Encryptor.Md5Hash("123qwe"),
-                    CreateTime = DateTime.Now,
-                    IsDeleted = 0,
-                }
+                return;   // 已经初始化过数据，直接返回
+            }
+            Guid departmentId = Guid.NewGuid();
+            //增加一个部门
+            _context.Departments.Add(
+               new Department
+               {
+                   Id = departmentId,
+                   Name = "TsBlog总部",
+                   ParentId = Guid.Empty
+               }
+            );
+            //增加一个超级管理员用户
+            _context.Users.Add(
+                 new User
+                 {
+                     Id = Guid.NewGuid(),
+                     UserName = "admin",
+                     Password = Encryptor.Md5Hash("123456"), //暂不进行加密
+                     Name = "超级管理员",
+                     DepartmentId = departmentId
+                 }
+            );
+            //增加四个基本功能菜单
+            var items = new List<Menu>(){
+                new Menu
+                {
+                    Id=Guid.NewGuid(),
+                    Name = "组织机构管理",
+                    Code = "Department",
+                    SerialNumber = 0,
+                    ParentId = Guid.Empty,
+                    Icon = "fa fa-link"
+                },
+               new Menu
+               {
+                   Id=Guid.NewGuid(),
+                   Name = "角色管理",
+                   Code = "Role",
+                   SerialNumber = 1,
+                   ParentId = Guid.Empty,
+                   Icon = "fa fa-link"
+               },
+               new Menu
+               {
+                   Id=Guid.NewGuid(),
+                   Name = "用户管理",
+                   Code = "User",
+                   SerialNumber = 2,
+                   ParentId = Guid.Empty,
+                   Icon = "fa fa-link"
+               },
+               new Menu
+               {
+                   Id=Guid.NewGuid(),
+                   Name = "功能管理",
+                   Code = "Department",
+                   SerialNumber = 3,
+                   ParentId = Guid.Empty,
+                   Icon = "fa fa-link"
+               }
             };
             foreach (var item in items)
             {
-                var entity = _context.Users.FirstOrDefault(t => t.UserName == item.UserName);
+                var entity = _context.Menus.FirstOrDefault(t => t.Name == item.Name);
                 if (entity == null)
                 {
-                    _context.Users.Add(item);
-                    _context.SaveChanges();
+                    _context.Menus.Add(item);
                 }
             }
+            _context.SaveChanges();
         }
     }
 }

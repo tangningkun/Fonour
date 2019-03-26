@@ -13,7 +13,6 @@ namespace TsBlog.Domain.Entities
     [SugarTable("Menus")]
     public class Menu : Entity
     {
-        
         /// <summary>
         /// 父级ID
         /// </summary>

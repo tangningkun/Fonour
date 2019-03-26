@@ -10,34 +10,16 @@ namespace TsBlog.Domain.Entities
     [SugarTable("Roles")]
     public class Role:Entity
     {
-        /// <summary>
-        /// 角色ID
-        /// </summary>
-        public Guid RoleId { get; set;}
-        /// <summary>
-        /// 角色名称
-        /// </summary>
-        public string RoleName { get; set; }
-        /// <summary>
-        /// 角色类型
-        /// </summary>
-        public int RoleType { get; set; }
+        public string Code { get; set; }
 
-        /// <summary>
-        /// 角色编码
-        /// </summary>
-        public string RoleCode { get; set; }
-        /// <summary>
-        /// 创建人Id
-        /// </summary>
+        public string Name { get; set; }
+
         public Guid CreateUserId { get; set; }
-        /// <summary>
-        /// 角色备注
-        /// </summary>
+
+        public DateTime? CreateTime { get; set; }
+
         public string Remarks { get; set; }
 
-        public virtual ICollection<User> Users { get; set; }
-
-        public virtual ICollection<Menu> Menus { get; set; }
+        public virtual ICollection<RoleMenu> RoleMenus { get; set; }
     }
 }

@@ -7,13 +7,13 @@ namespace TsBlog.Repositories.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class FirstDb : IMigrationMetadata
+    public sealed partial class firstdb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(FirstDb));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(firstdb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201903260857329_FirstDb"; }
+            get { return "201903261347450_firstdb"; }
         }
         
         string IMigrationMetadata.Source

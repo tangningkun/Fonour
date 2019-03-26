@@ -88,7 +88,6 @@ namespace TsBlog.Services.UserAppServices
                 UserName = dto.UserName,
                 Password = dto.Password,
                 Id = Guid.NewGuid(),
-                UserId = Guid.NewGuid(),
                 CreateTime = DateTime.Now,
                 IsDeleted = 0
             };
