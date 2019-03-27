@@ -28,8 +28,9 @@ define(['main', 'current', 'lay!layer'], function(main, current) {
           Password: password
         },
         type: 'POST',
-        async: false,
+        async: true,
         success: function(result) {
+          console.log('result', result);
           if (result.code == 200) {
             location.href = '/Home/Index'; //跳转到首页
           } else if (result.code != 202) {

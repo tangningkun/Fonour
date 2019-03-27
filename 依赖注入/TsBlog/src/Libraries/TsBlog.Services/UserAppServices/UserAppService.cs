@@ -31,13 +31,13 @@ namespace TsBlog.Services.UserAppServices
         /// </summary>
         /// <param name="dto">登录信息</param>
         /// <returns></returns>
-        public async Task<MessageDto<User>> CheckLoginUserInfo(LoginUserDto dto)
+        public async Task<MessageDto<UserDto>> CheckLoginUserInfo(LoginUserDto dto)
         {
             try
             {
                 var checkCount = await _userRepositiory.CountAsync(d => d.UserName == dto.UserName);
                 if (checkCount == 0)
-                    return new MessageDto<User>
+                    return new MessageDto<UserDto>
                     {
                         code = 201,
                         message = "该账户名不存在!",
@@ -48,15 +48,15 @@ namespace TsBlog.Services.UserAppServices
                 if (count != 0)
                 {
                     var query = await _userRepositiory.FirstOrDefaultAsync(d => d.UserName == dto.UserName && d.Password == password);
-                    return new MessageDto<User>
+                    return new MessageDto<UserDto>
                     {
                         code = 200,
                         message = "登录成功!",
                         result = "Success",
-                        data = query
+                        data = query.MapTo<User, UserDto>()
                     };
                 }
-                return new MessageDto<User>
+                return new MessageDto<UserDto>
                 {
                     code = 201,
                     message = "账户名或密码有误!",
@@ -65,7 +65,7 @@ namespace TsBlog.Services.UserAppServices
             }
             catch (Exception e)
             {
-                return new MessageDto<User>
+                return new MessageDto<UserDto>
                 {
                     code = 202,
                     message = e.Message.ToString(),

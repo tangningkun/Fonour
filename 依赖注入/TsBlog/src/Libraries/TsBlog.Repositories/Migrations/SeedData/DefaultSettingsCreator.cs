@@ -105,6 +105,17 @@ namespace TsBlog.Repositories.Migrations.SeedData
                      DepartmentId = departmentId
                  }
             );
+            //增加一个普通用户
+            _context.Users.Add(
+                 new User
+                 {
+                     Id = Guid.NewGuid(),
+                     UserName = "Lonely",
+                     Password = Encryptor.Md5Hash("123456"), //暂不进行加密
+                     Name = "用户",
+                     DepartmentId = departmentId
+                 }
+            );
             //增加四个基本功能菜单
             var items = new List<Menu>(){
                 new Menu
