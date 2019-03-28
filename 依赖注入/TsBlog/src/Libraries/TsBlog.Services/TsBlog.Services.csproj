@@ -56,6 +56,9 @@
     <Compile Include="AppServices\IAppService.cs" />
     <Compile Include="AppServices\ITsBlogAppService.cs" />
     <Compile Include="AppServices\TsBlogAppService.cs" />
+    <Compile Include="DepartmentAppServices\DepartmentAppService.cs" />
+    <Compile Include="DepartmentAppServices\Dto\DepartmentDto.cs" />
+    <Compile Include="DepartmentAppServices\IDepartmentAppService.cs" />
     <Compile Include="MenuAppServices\Dto\MenuDto.cs" />
     <Compile Include="MenuAppServices\IMenuAppService.cs" />
     <Compile Include="MenuAppServices\MenuAppService.cs" />
