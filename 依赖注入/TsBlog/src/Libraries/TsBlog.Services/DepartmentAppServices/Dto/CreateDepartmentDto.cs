@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TsBlog.Services.DepartmentAppServices.Dto
 {
-    public class DepartmentDto
+    public class CreateDepartmentDto
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } 
         /// <summary>
         /// 部门名称
         /// </summary>

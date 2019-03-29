@@ -10,4 +10,6 @@
       console.log('result', result);
     }
   });
+  //获取用户Session
+  console.log('usersession', JSON.parse(usersession.replace(/&quot;/g, '"')));
 });
